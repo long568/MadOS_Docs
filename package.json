@@ -1,0 +1,14 @@
+{
+  "name": "MadOS_Docs",
+  "version": "2.47.2",
+  "description": "MadOS Documents",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
