@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 actionText: 快速上手 →
-actionLink: /QuickStart/
+actionLink: /Start/
 features:
 - title: 简单
   details: MadOS环境：每个任务运行于独立线程中，彼此通过内核API进行数据交互，各任务逻辑独立，便于设计、修改。
