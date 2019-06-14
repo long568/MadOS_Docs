@@ -1,6 +1,6 @@
 module.exports = {
     title: 'MadOS',
-    description: '实时操作系统',
+    description: '极速构建智能硬件的最佳方案',
     head: [
         ['link', { rel: 'icon', href: '/logo.ico' }],
     ],
@@ -11,6 +11,8 @@ module.exports = {
             { text: '故事', link: '/Story/' },
             { text: '教学', link: '/Start/' },
             { text: '手册', link: '/HandBook/' }
-        ]
+        ],
+        sidebar: 'auto'
+        // lastUpdated: 'Last Updated'
     }
 }
