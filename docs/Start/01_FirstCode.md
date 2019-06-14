@@ -2,14 +2,14 @@
 ## 获取源码
 [MadOS 源码仓库](https://github.com/long568/MadOS)
 ::: tip
-初学者直接选择master分支， 产品应用亦可选择经过严格验证的release版本。
+初学者请选择master分支， 产品应用可选择经过严格验证的release版本。
 :::
 
 ## 展开源码
 将 **MadOS** 文件夹拖入 **VSCode** 中:
 ![First Code](./images/FirstCode.png)
 ### 目录结构
-``` sh
+``` bash
 # 开发者无需关心的内容以 n 标记。
 # 开发者可以参考的内容以 - 标记。
 # 开发者需要关心的内容以 y 标记。
@@ -40,7 +40,7 @@ MadOS
 
 ## 切换项目
 在 **MadOS** 根目录下有一个名为 **user_config.sh** 配置脚本，用以切换当前工作项目：
-``` sh
+``` bash
 # export MADOS_WORKING_APP=test_kernel
 # export MADOS_WORKING_APP=test_module
 export MADOS_WORKING_APP=lesson000
@@ -51,13 +51,13 @@ export MADOS_WORKING_APP=lesson000
 将 **lesson000** 的注释去掉，并将其余项目注释掉，然后在VSCode中运行 **config** 任务：
 ::: tip
 终端 -> 运行任务 -> config
-``` sh
+``` bash
 MadOS is ready... Enjoy yourself!
 ```
 :::
 
 ## 项目结构
-``` sh
+``` bash
 lesson000
 ├─ CfgApp.mk # 项目配置
 ├─ CfgDevs.c # 设备列表
@@ -67,7 +67,7 @@ lesson000
 ```
 ::: tip
 - 如果您是初学者、开发者，只需关心 **main.c** ，即您的项目源码，以便快速实现想法。
-- 为了后续的学习，我们依然对每个文件进行初步介绍，您可快速浏览，以备不时之需。
+- 为便于后续学习，我们依然对每个文件进行初步介绍，您可快速浏览，以备不时之需。
 :::
 ### CfgApp.mk
 ``` makefile
@@ -145,13 +145,13 @@ static void madStartup(MadVptr exData)
 }
 ```
 #### 运行时堆栈
-运行时堆栈的空间通常由硬件决定。  
-通常，任何项目的运行时堆栈，皆由下式定义:
+运行时堆栈的空间由硬件决定。  
+任何项目的运行时堆栈皆可由下式定义:
 ``` c
 MadAligned_t MadStack[MAD_OS_STACK_SIZE / MAD_MEM_ALIGN] = { 0 };
 ```
 #### 初始化
-通常，以下初始化流程可适用于任何项目。  
+下述初始化流程可适用于任何项目。  
 启动MadOS后，程序会跳转至新建线程中运行。  
 第一课中，我们只建立一个线程，意在简明，线程优先级取 0。
 ``` c
@@ -165,10 +165,8 @@ int main()
 } // 以上是MadOS的启动过程，初学者不必深究，随后的学习中会逐步了解其原理
 ```
 #### 线程
-线程是开发者真正实现想法的地方。  
-第一课中，我们只建立一个线程，意在简明，帮助开发者快速上手。
+开发者在线程中实现想法，每个线程都是一个无限循环。
 ::: tip
-MadOS的每个线程都是一个无限循环。  
 使用线程管理API，可以新建、挂起、恢复、删除线程。
 :::
 ``` c
@@ -205,7 +203,7 @@ static void madStartup(MadVptr exData)
 void delay(int i) { while(i--); }
 ```
 - MadOS环境，**SysTick** 初始化后提供了精准的**心跳**，根据**心跳**的频率可得精准延时。
-    - 运行90天后，实测误差小于1微秒(1us = 10^-6s)
+    - 运行90天，实测误差小于1微秒($1 us = 10^{-6} s$)
 
 ``` c
 madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
@@ -226,26 +224,25 @@ madTimeDly(3600 * 24 * 90);
 终端 -> 运行任务 -> build
 :::
 ### 编译结果
-``` sh
+``` bash
 ...
 Building ... Done.
 ```
 编译成功后，MadOS根目录下会生成 **build** 文件夹：
-``` sh
+``` bash
 build
-├─ app            # 存放项目相关编译过程文件
-├─ arch           # 存放芯片相关编译过程文件
-├─ drv            # 存放驱动相关编译过程文件
-├─ kernel         # 存放内核相关编译过程文件
-├─ HiMadOS.elf    # 调试文件
-├─ HiMadOS.hex    # 烧录文件
-├─ libarch.a      # 芯片库文件
-├─ libdrv.a       # 驱动库文件
-└─ libkernel.a    # 内核库文件
+├─ app         # 存放项目相关编译过程文件
+├─ arch        # 存放芯片相关编译过程文件
+├─ drv         # 存放驱动相关编译过程文件
+├─ kernel      # 存放内核相关编译过程文件
+├─ HiMadOS.elf # 调试文件
+├─ HiMadOS.hex # 烧录文件
+├─ libarch.a   # 芯片库文件
+├─ libdrv.a    # 驱动库文件
+└─ libkernel.a # 内核库文件
 ```
 ::: tip
-**build** 内生成的目录 / 文件与项目配置有关。  
-通常，开发者无需关心 **build** 内的文件。
+**build** 内生成的目录 / 文件与项目配置有关，开发者无需关心。
 :::
 ## 调试项目
 将 **STLink** 分别与开发板、电脑连接，并将开发板通电:  
@@ -253,8 +250,9 @@ build
 在 **VSCode** 中启动调试:  
 ![Start Debug](./images/StartDebug.png)
 ::: tip
-MacOSX / Ubuntu 可能需要安装 **libusb** 以支持 **STLink**。  
-Windows 需要安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
+为支持 **STLink** : 
+- MacOSX / Ubuntu 需安装 **libusb** 。
+- Windows 需安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
 :::
 ![Debugging](./images/Debugging.png)
 正常启动调试后，程序会暂停在 **main** 函数起始位置。

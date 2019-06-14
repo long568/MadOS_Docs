@@ -1,6 +1,6 @@
 # 搭建环境
 ## 获取工具链
-我们已为开发者准备好工具链，百度云分享：
+我们已为开发者准备好工具链:  
 | 平台 | 提取码 |
 | :----: | :----: |
 | [MacOSX](https://pan.baidu.com/s/1hGaZh5eAdy5QHW8a_7C22A)  | 9h4n |
@@ -11,10 +11,10 @@
 :::
 
 ## 配置工具链
-首先，将工具链解压到磁盘上，然后，设置几个环境变量： 
+首先，将工具链解压到磁盘上，然后，设置几个环境变量:  
 ### MacOSX / Ubuntu  
-假设解压路径为：/home/creator/mados-tools
-``` sh
+假设解压路径为: /home/creator/mados-tools
+``` bash
 export MADOS_TOOLS_VER=7.4.0  
 export MADOS_TOOLS_HOME=/home/creator/mados-tools/tools/arm-none-eabi-$MADOS_TOOLS_VER  
 export MADOS_TOOLS_BIN=$MADOS_TOOLS_HOME/bin  
@@ -26,15 +26,15 @@ export PATH=$MADOS_TOOLS_BIN:$PATH
 | MacOSX | ~/.bash_profile |
 | Ubuntu | ~/.bashrc       |
 执行以下命令：
-``` sh
+``` bash
 source ~/.bash_profile # MacOSX
 ```
-``` sh
+``` bash
 source ~/.bashrc       # Ubuntu
 ```
 ### Windows  
-假设解压路径为：D:\DreamOn\MSYS2，设置用户环境变量：
-``` sh
+假设解压路径为: D:\DreamOn\MSYS2，设置用户环境变量:
+``` bash
 # MADOS_TOOLS_VER   
   7.4.0
 # MADOS_TOOLS_HOME  
@@ -50,15 +50,15 @@ source ~/.bashrc       # Ubuntu
 ## 安装调试工具
 推荐使用 **OpenOCD** 作为在线调试工具
 ### MacOSX
-``` sh
+``` bash
 brew install openocd
 ```
 ### Ubuntu
-``` sh
+``` bash
 sudo apt-get install openocd
 ```
 ### Windows
-``` sh
+``` bash
 # Windows 版工具链已包含 OpenOCD ，无需另行安装。
 ```
 
@@ -79,28 +79,28 @@ MadOS支持Lua脚本语言，详见后续章节。
 ## 验证
 ### GCC
 执行
-``` sh
+``` bash
 arm-none-eabi-gcc -v
 ```
 输出版本信息
-``` sh
+``` bash
 gcc version 7.4.0 (GNU Tools for MadOS [ARM][20190331][gcc-7.4.0][Newlib])
 ```
 ### GDB
 执行
-``` sh
+``` bash
 arm-none-eabi-gdb -v
 ```
 输出版本信息
-``` sh
+``` bash
 GNU gdb (GDB) 8.2.1
 ```
 ### OpenOCD
 执行
-``` sh
+``` bash
 openocd -v
 ```
 输出版本信息
-``` sh
+``` bash
 Open On-Chip Debugger 0.10.0
 ```
