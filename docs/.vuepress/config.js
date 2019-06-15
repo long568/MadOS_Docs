@@ -35,6 +35,4 @@ module.exports = {
     }
 }
 
-// npm install markdown-it
-// npm uninstall markdown-it-katex
 // npm install @iktakahiro/markdown-it-katex
