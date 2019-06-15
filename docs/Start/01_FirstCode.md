@@ -274,13 +274,13 @@ build
 按 **F5** 或 点击调试工具栏中的 **继续** 按钮，程序继续执行。  
 ![DebugTools](./images/DebugTools.png)
 :::
-<video 
+<video
     id="video"
-    controls="" 
-    preload="none" 
+    controls=""
+    preload="none"
     poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
-    <source 
+    <source
         id="mp4"
-        src="./images/Flashing.mp4" 
+        src="./images/Flashing.mp4"
         type="video/mp4">
 </video>

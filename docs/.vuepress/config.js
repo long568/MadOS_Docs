@@ -6,12 +6,12 @@ module.exports = {
             rel: 'icon',
             href: '/logo.ico'
         }],
-        ['link', {  
-            rel: 'stylesheet', 
+        ['link', {
+            rel: 'stylesheet',
             href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css'
         }],
-        ['link', {  
-            rel: 'stylesheet', 
+        ['link', {
+            rel: 'stylesheet',
             href: 'https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css'
         }],
     ],
@@ -19,7 +19,7 @@ module.exports = {
     markdown: {
         lineNumbers: true,
         config: md => {
-            md.set({html: true})
+            md.set({ html: true })
             md.use(require("@iktakahiro/markdown-it-katex"))
         }
     },
@@ -34,5 +34,3 @@ module.exports = {
         sidebar: 'auto'
     }
 }
-
-// npm install @iktakahiro/markdown-it-katex
