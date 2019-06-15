@@ -25,10 +25,10 @@ module.exports = {
     },
     themeConfig: {
         nav: [
-            { text: '主页',    link: '/' },
-            { text: '故事',    link: '/Story/' },
-            { text: '教学',    link: '/Start/' },
-            { text: '手册',    link: '/HandBook/' },
+            { text: '主页', link: '/' },
+            { text: '故事', link: '/Story/' },
+            { text: '教学', link: '/Start/' },
+            { text: '手册', link: '/HandBook/' },
             { text: 'Github', link: 'https://github.com/long568/MadOS' }
         ],
         sidebar: 'auto'
