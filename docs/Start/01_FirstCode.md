@@ -1,4 +1,5 @@
 # 初识源码
+
 ## 获取源码
 [MadOS 源码仓库](https://github.com/long568/MadOS)
 ::: tip
@@ -8,6 +9,7 @@
 ## 展开源码
 将 **MadOS** 文件夹拖入 **VSCode** 中:
 ![First Code](./images/FirstCode.png)
+
 ### 目录结构
 ``` bash
 # 开发者无需关心的内容以 n 标记。
@@ -69,6 +71,7 @@ lesson000
 - 如果您是初学者、开发者，只需关心 **main.c** ，即您的项目源码，以便快速实现想法。
 - 为便于后续学习，我们依然对每个文件进行初步介绍，您可快速浏览，以备不时之需。
 :::
+
 ### CfgApp.mk
 ``` makefile
 # MCU架构配置
@@ -80,6 +83,7 @@ export MCU_SUFFIX = cl
 export PRJ_CFLAGS  = -Os
 export PRJ_LDFLAGS = --specs=nano.specs
 ```
+
 ### CfgDevs.c
 ``` c
 // 第一课中未启用任何设备，设备列表为空。
@@ -88,6 +92,7 @@ MadDev_t *DevsList[] = {
     MNULL
 };
 ```
+
 ### CfgUser.h
 ``` c
 // MadOS支持最大256个任务优先级，数字越大优先级越低。
@@ -110,6 +115,7 @@ enum {
 // 堆空间定义(硬件相关)
 #define MAD_OS_STACK_SIZE (56 * 1024)
 ```
+
 ### Makefile
 ``` makefile
 # 将项目路径下所有.c文件输入编译系统。
@@ -121,6 +127,7 @@ after_all:
 	$(LD) $(wildcard $(BUILD_DIR)/app/*.o) $(LDFLAGS) -o $(TARGET).elf
 	$(OCPY) -O ihex $(TARGET).elf $(TARGET).hex
 ```
+
 ### main.c
 ``` c
 #include "MadOS.h"   // MadOS核心头文件
@@ -144,12 +151,14 @@ static void madStartup(MadVptr exData)
     ...
 }
 ```
+
 #### 运行时堆栈
 运行时堆栈的空间由硬件决定。  
 任何项目的运行时堆栈皆可由下式定义:
 ``` c
 MadAligned_t MadStack[MAD_OS_STACK_SIZE / MAD_MEM_ALIGN] = { 0 };
 ```
+
 #### 初始化
 下述初始化流程可适用于任何项目。  
 启动MadOS后，程序会跳转至新建线程中运行。  
@@ -164,6 +173,7 @@ int main()
     while(1);                                   // !永远不该运行至此!
 } // 以上是MadOS的启动过程，初学者不必深究，随后的学习中会逐步了解其原理
 ```
+
 #### 线程
 开发者在线程中实现想法，每个线程都是一个无限循环。
 ::: tip
@@ -212,17 +222,21 @@ madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
 madTimeDly(3600 * 24 * 90);
 ```
 :::
+
 ## 编译项目
+
 ### 首次编译
 在VSCode中运行 **rebuild** 任务
 ::: tip
 终端 -> 运行任务 -> rebuild
 :::
+
 ### 普通编译
 在VSCode中运行 **build** 任务
 ::: tip
 终端 -> 运行任务 -> build
 :::
+
 ### 编译结果
 ``` bash
 ...
@@ -244,13 +258,13 @@ build
 ::: tip
 **build** 内生成的目录 / 文件与项目配置有关，开发者无需关心。
 :::
+
 ## 调试项目
 将 **STLink** 分别与开发板、电脑连接，并将开发板通电:  
 ![Hardware Connection](./images/HWConnection.jpeg)
 在 **VSCode** 中启动调试:  
 ![Start Debug](./images/StartDebug.png)
 ::: tip
-为支持 **STLink** : 
 - MacOSX / Ubuntu 需安装 **libusb** 。
 - Windows 需安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
 :::

@@ -1,4 +1,5 @@
 # 搭建环境
+
 ## 获取工具链
 我们已为开发者准备好工具链:  
 | 平台 | 提取码 |
@@ -11,7 +12,8 @@
 :::
 
 ## 配置工具链
-首先，将工具链解压到磁盘上，然后，设置几个环境变量:  
+首先，将工具链解压到磁盘上，然后，设置几个环境变量:
+
 ### MacOSX / Ubuntu  
 假设解压路径为: /home/creator/mados-tools
 ``` bash
@@ -32,6 +34,7 @@ source ~/.bash_profile # MacOSX
 ``` bash
 source ~/.bashrc       # Ubuntu
 ```
+
 ### Windows  
 假设解压路径为: D:\DreamOn\MSYS2，设置用户环境变量:
 ``` bash
@@ -49,21 +52,25 @@ source ~/.bashrc       # Ubuntu
 
 ## 安装调试工具
 推荐使用 **OpenOCD** 作为在线调试工具
+
 ### MacOSX
 ``` bash
 brew install openocd
 ```
+
 ### Ubuntu
 ``` bash
 sudo apt-get install openocd
 ```
+
 ### Windows
 ``` bash
 # Windows 版工具链已包含 OpenOCD ，无需另行安装。
 ```
 
 ## 安装代码编辑器
-推荐使用[Visual Studio Code](https://code.visualstudio.com/)作为代码编辑工具，根据平台安装相应版本。
+推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
+
 ### 安装 VSCode 扩展
 | 扩展名 | 扩展标识符 | 发布者名称 |
 | :----: | :----: | :----: |
@@ -77,6 +84,7 @@ MadOS支持Lua脚本语言，详见后续章节。
 :::
 
 ## 验证
+
 ### GCC
 执行
 ``` bash
@@ -86,6 +94,7 @@ arm-none-eabi-gcc -v
 ``` bash
 gcc version 7.4.0 (GNU Tools for MadOS [ARM][20190331][gcc-7.4.0][Newlib])
 ```
+
 ### GDB
 执行
 ``` bash
@@ -95,6 +104,7 @@ arm-none-eabi-gdb -v
 ``` bash
 GNU gdb (GDB) 8.2.1
 ```
+
 ### OpenOCD
 执行
 ``` bash
