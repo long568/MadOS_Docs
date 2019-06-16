@@ -268,11 +268,12 @@ build
 :::
 
 ## 调试项目
-将 **STLink** 分别与开发板、电脑连接，并将开发板通电:  
+将 **STLink** 分别与 **LoBoard**(开发板)、电脑连接，并给 **LoBoard** 通电:  
 ![Hardware Connection](./images/HWConnection.jpeg)
 ::: tip
 - MacOSX / Ubuntu 需安装 **libusb** 。
 - Windows 需安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
+- 如果您需要购买 **STLink** 或 **LoBoard** ，请移步至我们的[小店](https://shop108272841.taobao.com/)。
 :::
 在 **VSCode** 中启动调试:  
 ![Start Debug](./images/StartDebug.png)  
