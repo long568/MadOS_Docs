@@ -16,21 +16,29 @@
 # 开发者可以参考的内容以 - 标记。
 # 开发者需要关心的内容以 y 标记。
 MadOS
-├─ .vscode # n : VSCode 相关配置
-├─ app     # y : 项目源码(其中每个子目录为一个项目)
-│  ├─ lesson000   # - : MadOS应用教程第一课，稍后我们会展开分析它。
-│  ├─ LoArm       # - : 遥控机械臂，包含步进 / 直流电机驱动、网络通信逻辑，尚需完善。
-│  ├─ LoIoT       # - : 物联网节点，包含Lora模块驱动，云端传输、传感器读取逻辑。
-│  ├─ LoNode      # - : LoBoard开发板配套例程，不断完善中。
-│  ├─ test_kernel # n : MadOS功能压力测试。
-│  ├─ test_module # - : LoBoard开发板配套例程，后续将转移至 LoNode 中。
-│  └─ # - : 未来，我们将开放更多示例供开发者参考。
-├─ arch    # n : MCU架构相关源码
-├─ build   # n : 编译过程文件存放处(源码编译时自动生成)
-├─ driver  # n : 驱动源码
-├─ kernel  # n : 内核源码
-├─ library # n : 第三方库源码
-└─ tools   # n : MadOS环境配置相关工具
+├─ .vscode/        # n : VSCode 相关配置
+├─ app/            # y : 项目源码(其中每个子目录为一个项目)
+│  ├─ lesson000/   # - : MadOS应用教程第一课，稍后我们会展开分析它。
+│  ├─ LoArm/       # - : 遥控机械臂，包含步进 / 直流电机驱动、网络通信逻辑，尚需完善。
+│  ├─ LoIoT/       # - : 物联网节点，包含Lora模块驱动，云端传输、传感器读取逻辑。
+│  ├─ LoNode/      # - : LoBoard开发板配套例程，不断完善中。
+│  ├─ test_kernel/ # n : MadOS功能压力测试。
+│  ├─ test_module/ # - : LoBoard开发板配套例程，后续将转移至 LoNode 中。
+│  └─ ...          # - : 未来，我们将开放更多示例供开发者参考。
+├─ arch/           # n : MCU架构相关源码
+├─ build/          # n : 编译过程文件存放处(源码编译时自动生成)
+├─ driver/         # n : 驱动源码
+├─ kernel/         # n : 内核源码
+├─ library/        # n : 第三方库源码
+├─ tools/          # n : MadOS环境配置相关工具
+├─ .gitattributes  # n : git属性文件
+├─ .gitignore      # n : git过滤文件
+├─ app_switcher.sh # y : 工作App切换器，详见后述。
+├─ elibs.mk        # n : 第三方库配置
+├─ LICENSE         # n : 许可证
+├─ main.mk         # n : 真实主编译文件(临时生成)
+├─ Makefile        # n : 影子主编译文件
+└─ rules.mk        # n : 编译规则定义
 ```
 ::: tip
 - 如果您是操作系统爱好者，也许对 **arch、kernel、driver** 中的内容会感兴趣。  
@@ -41,7 +49,7 @@ MadOS
 :::
 
 ## 切换项目
-在 **MadOS** 根目录下有一个名为 **user_config.sh** 配置脚本，用以切换当前工作项目：
+在 **MadOS** 根目录下有名为 **app_switcher.sh** 的脚本，用以切换当前工作项目: 
 ``` bash
 # export MADOS_WORKING_APP=test_kernel
 # export MADOS_WORKING_APP=test_module
@@ -50,7 +58,7 @@ export MADOS_WORKING_APP=lesson000
 # export MADOS_WORKING_APP=LoIoT
 # export MADOS_WORKING_APP=LoNode
 ```
-将 **lesson000** 的注释去掉，并将其余项目注释掉，然后在VSCode中运行 **config** 任务：
+将 **lesson000** 前的注释去掉，并注释余项目，然后在VSCode中运行 **config** 任务：
 ::: tip
 终端 -> 运行任务 -> config
 ``` bash
@@ -65,7 +73,7 @@ lesson000
 ├─ CfgDevs.c # 设备列表
 ├─ CfgUser.h # 用户配置
 ├─ main.c    # 工程源码(主文件)
-└─ Makefile  # 编译规则输入文件
+└─ Makefile  # 编译文件
 ```
 ::: tip
 - 如果您是初学者、开发者，只需关心 **main.c** ，即您的项目源码，以便快速实现想法。
@@ -245,15 +253,15 @@ Building ... Done.
 编译成功后，MadOS根目录下会生成 **build** 文件夹：
 ``` bash
 build
-├─ app         # 存放项目相关编译过程文件
-├─ arch        # 存放芯片相关编译过程文件
-├─ drv         # 存放驱动相关编译过程文件
-├─ kernel      # 存放内核相关编译过程文件
-├─ HiMadOS.elf # 调试文件
-├─ HiMadOS.hex # 烧录文件
-├─ libarch.a   # 芯片库文件
-├─ libdrv.a    # 驱动库文件
-└─ libkernel.a # 内核库文件
+├─ app/         # 存放项目相关编译过程文件
+├─ arch/        # 存放芯片相关编译过程文件
+├─ drv/         # 存放驱动相关编译过程文件
+├─ kernel/      # 存放内核相关编译过程文件
+├─ HiMadOS.elf  # 调试文件
+├─ HiMadOS.hex  # 烧录文件
+├─ libarch.a    # 芯片库文件
+├─ libdrv.a     # 驱动库文件
+└─ libkernel.a  # 内核库文件
 ```
 ::: tip
 **build** 内生成的目录 / 文件与项目配置有关，开发者无需关心。
@@ -262,15 +270,15 @@ build
 ## 调试项目
 将 **STLink** 分别与开发板、电脑连接，并将开发板通电:  
 ![Hardware Connection](./images/HWConnection.jpeg)
-在 **VSCode** 中启动调试:  
-![Start Debug](./images/StartDebug.png)
 ::: tip
 - MacOSX / Ubuntu 需安装 **libusb** 。
 - Windows 需安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
 :::
-![Debugging](./images/Debugging.png)
-正常启动调试后，程序会暂停在 **main** 函数起始位置。
-::: tip  
+在 **VSCode** 中启动调试:  
+![Start Debug](./images/StartDebug.png)  
+正常启动调试后，程序会暂停在 **main** 函数起始位置:
+![Debugging](./images/Debugging.png)  
+::: tip
 按 **F5** 或 点击调试工具栏中的 **继续** 按钮，程序继续执行。  
 ![DebugTools](./images/DebugTools.png)
 :::
