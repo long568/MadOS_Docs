@@ -15,7 +15,7 @@ module.exports = {
             href: 'https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css'
         }],
     ],
-    base: '/TestVuePress/',
+    base: '/MadOS_Docs/',
     markdown: {
         lineNumbers: true,
         config: md => {

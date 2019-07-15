@@ -19,7 +19,7 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>  REPO=github上的项目
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-# https://long568.github.io/TestVuePress/
-git push -f git@github.com:long568/TestVuePress.git master:gh-pages
+# https://long568.github.io/MadOS_Docs/
+git push -f git@github.com:long568/MadOS_Docs.git master:gh-pages
 
 cd -
