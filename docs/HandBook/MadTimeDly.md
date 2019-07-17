@@ -18,7 +18,10 @@ void  madInitSysTick (MadTim_t freq, MadTim_t ticks)
 ```c
 MadUint madSysTick (void)
 ```
-每一个 System Tick 被调用一次，扫描所有线程，对延时值不为 0 的线程进行状态处理。通常在 System Tick 中断函数中被调用。使用者不可调用该函数。
+每一个 System Tick 被调用一次，扫描所有线程，对延时值不为 0 的线程进行状态处理。 
+::: tip  
+通常在 System Tick 中断函数中被调用。使用者不可调用该函数。
+:::
 
 ## madTimeDly
 ```c

@@ -51,8 +51,8 @@ MadVptr madMemRealloc (MadVptr p, MadSize_t size)
 基于现有内存块 p，重新分配一块尺寸为 size 的新内存块。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
-| n    | in | 连续内存块的数量 |
-| size | in | 连续内存块的尺寸 |
+| p    | in | 原内存块 |
+| size | in | 新内存块尺寸 |
 
 | 返回值 | 说明 |
 | :-:| :-|

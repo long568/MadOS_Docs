@@ -84,8 +84,8 @@ MadU8 madDoMsgSend (
 | MAD_ERR_OK | 投递消息成功 |
 
 ::: tip
-- 只有内建了投递锁定信号量才可能阻塞；
-- 不要在中断函数中尝试阻塞线程；
+- 内建了投递锁定信号量才可能阻塞；
+- 不要在中断函数中尝试阻塞线程。
 :::
 
 ## madDoMsgQDelete
@@ -106,7 +106,7 @@ void madDoMsgQDelete (MadMsgQCB_t **pMsgQ, MadBool opt)
 :::
 
 ::: tip
-如果内建了投递锁定信号量，删除消息队列以 opt 为参数删除内建投递锁定信号量。
+如果内建了投递锁定信号量，则以 opt 为参数删除内建投递锁定信号量。
 :::
 
 ## madMsgQCreate(size)
@@ -115,7 +115,7 @@ MadMsgQCB_t* madMsgQCreateCarefully (MadU16 size, MadBool sendBlock)
 ```
 | 参数 | 值 |
 | :-| :-|
-| opt | MFALSE |
+| sendBlock | MFALSE |
 
 ## madMsgSend(pMsgQ, msg)
 ```c

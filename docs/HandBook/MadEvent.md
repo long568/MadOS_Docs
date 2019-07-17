@@ -77,12 +77,12 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 ```c
 void madDoEventTrigger (MadEventCB_t **pEvent, MadUint mask, MadU8 err)
 ```
-检查事件当前掩码。
+以mask为掩码值激活事件掩码。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pEvent | in | 事件指针 |
-| mask   | in | 触发掩码 |
-| err    | in | 触发事件错误代码(通常为MAD_ERR_OK) |
+| mask   | in | 激活掩码 |
+| err    | in | 激活错误代码(通常为MAD_ERR_OK) |
 
 ## madDoEventDelete
 ```c
