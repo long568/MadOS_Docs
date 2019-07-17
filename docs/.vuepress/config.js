@@ -13,14 +13,15 @@ module.exports = {
         ['link', {
             rel: 'stylesheet',
             href: 'https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css'
-        }],
+        }]
     ],
     base: '/MadOS_Docs/',
     markdown: {
         lineNumbers: true,
-        config: md => {
-            md.set({ html: true })
-            md.use(require("@iktakahiro/markdown-it-katex"))
+        extendMarkdown: md => {
+            md.set({ html: true });
+            md.use(require("@iktakahiro/markdown-it-katex"));
+            md.use(require("markdown-it-footnote"));
         }
     },
     themeConfig: {
