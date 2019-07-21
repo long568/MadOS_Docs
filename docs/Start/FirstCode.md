@@ -45,7 +45,8 @@ MadOS
 - 如果您是初学者、开发者，则只需关心 **app** ，即您的项目源码，以便快速实现想法。  
 - MadOS尚未包含某些驱动或第三方库，如有需要，您可:
     - 联系 [我们](/Story/) 进行添加
-    - 访问 [社区](https://github.com/long568/MadOS/issues) 搜索一下
+    - 访问 [社区](http://club.digiic.com/Forum/PostIndex/s-72.html) 搜索一下
+    <!-- - 访问 [社区](https://github.com/long568/MadOS/issues) 搜索一下 -->
 :::
 
 ## 切换项目
