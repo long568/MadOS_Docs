@@ -52,7 +52,7 @@ MadU8 madMsgWait (MadMsgQCB_t **pMsgQ, MadVptr *msg, MadTim_t to)
 | :-| :-:| :-|
 | pMsgQ | in | 消息队列指针 |
 | msg   | in | 返回给应用的消息 |
-| to    | in | 等待超时的时间值 |
+| to    | in | 等待超时的时间值(0则无时限) |
 
 | 返回值 | 说明 |
 | :-:| :-|
@@ -75,7 +75,7 @@ MadU8 madDoMsgSend (
 | pMsgQ | in | 消息队列指针 |
 | msg   | in | 欲投递的消息 |
 | block | in | 消息队列已满时是否阻塞线程 |
-| to    | in | 等待超时的时间值 |
+| to    | in | 等待超时的时间值(0则无时限) |
 | err   | in | 投递操作的错误代码(通常为MAD_ERR_OK) |
 
 | 返回值 | 说明 |

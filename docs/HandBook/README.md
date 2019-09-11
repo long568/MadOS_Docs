@@ -10,6 +10,7 @@ sidebar: false
 - [内核.线程管理](/HandBook/MadThread.md)
 - [内核.延时管理](/HandBook/MadTimeDly.md)
 - [内核.信号管理](/HandBook/MadSemaphore.md)
+- [内核.互斥信号](/HandBook/MadMutex.md)
 - [内核.消息队列](/HandBook/MadMessage.md)
 - [内核.事件管理](/HandBook/MadEvent.md)
 - [内核.快速缓存](/HandBook/MadFastBuffer.md)

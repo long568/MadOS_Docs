@@ -105,7 +105,7 @@ MadU8 madSemWait (MadSemCB_t **pSem, MadTim_t timOut)
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pSem   | in | 信号量指针 |
-| timOut | in | 信号量的最大值 |
+| timOut | in | 等待超时的时间值(0则无时限) |
 
 | 返回值 | 说明 |
 | :-:| :-|
@@ -120,7 +120,7 @@ MadU8 madSemWaitInCritical (MadSemCB_t **pSem, MadTim_t timOut, MadCpsr_t *pCpsr
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pSem   | in | 信号量指针 |
-| timOut | in | 信号量的最大值 |
+| timOut | in | 等待超时的时间值(0则无时限) |
 | pCpsr  | io | 父级cpsr指针 |
 
 | 返回值 | 说明 |

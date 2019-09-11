@@ -8,7 +8,7 @@
 
 ## 展开源码
 将 **MadOS** 文件夹拖入 **VSCode** 中:
-![First Code](./images/FirstCode.png)
+![First Code](./images/FirstCode/FirstCode.png)
 
 ### 目录结构
 ``` bash
@@ -18,7 +18,7 @@
 MadOS
 ├─ .vscode/        # n : VSCode 相关配置
 ├─ app/            # y : 项目源码(其中每个子目录为一个项目)
-│  ├─ lesson000/   # - : MadOS应用教程第一课，稍后我们会展开分析它。
+│  ├─ lesson001/   # - : MadOS应用教程第一课，稍后我们会展开分析它。
 │  ├─ LoArm/       # - : 遥控机械臂，包含步进 / 直流电机驱动、网络通信逻辑，尚需完善。
 │  ├─ LoIoT/       # - : 物联网节点，包含Lora模块驱动，云端传输、传感器读取逻辑。
 │  ├─ LoNode/      # - : LoBoard开发板配套例程，不断完善中。
@@ -54,12 +54,12 @@ MadOS
 ``` bash
 # export MADOS_WORKING_APP=test_kernel
 # export MADOS_WORKING_APP=test_module
-export MADOS_WORKING_APP=lesson000
+export MADOS_WORKING_APP=lesson001
 # export MADOS_WORKING_APP=LoArm
 # export MADOS_WORKING_APP=LoIoT
 # export MADOS_WORKING_APP=LoNode
 ```
-将 **lesson000** 前的注释去掉，并注释余项目，然后在VSCode中运行 **config** 任务：
+将 **lesson001** 前的注释去掉，并注释余项目，然后在VSCode中运行 **config** 任务：
 ::: tip
 终端 -> 运行任务 -> config
 ``` bash
@@ -69,7 +69,7 @@ MadOS is ready... Enjoy yourself!
 
 ## 项目结构
 ``` bash
-lesson000
+lesson001
 ├─ CfgApp.mk # 项目配置
 ├─ CfgDevs.c # 设备列表
 ├─ CfgUser.h # 用户配置
@@ -270,19 +270,19 @@ build
 
 ## 调试项目
 将 **STLink** 分别与 **LoBoard**(开发板)、电脑连接，并给 **LoBoard** 通电:  
-![Hardware Connection](./images/HWConnection.jpeg)
+![Hardware Connection](./images/FirstCode/HWConnection.jpeg)
 ::: tip
 - MacOSX / Ubuntu 需安装 **libusb** 。
 - Windows 需安装 **ST** 官方提供的[STLink驱动](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
 - 如果您需要购买 **STLink** 或 **LoBoard** ，请移步至我们的[小店](https://shop108272841.taobao.com/)。
 :::
 在 **VSCode** 中启动调试:  
-![Start Debug](./images/StartDebug.png)  
+![Start Debug](./images/FirstCode/StartDebug.png)  
 正常启动调试后，程序会暂停在 **main** 函数起始位置:
-![Debugging](./images/Debugging.png)  
+![Debugging](./images/FirstCode/Debugging.png)  
 ::: tip
 按 **F5** 或 点击调试工具栏中的 **继续** 按钮，程序继续执行。  
-![DebugTools](./images/DebugTools.png)
+![DebugTools](./images/FirstCode/DebugTools.png)
 :::
 <video
     id="video"
@@ -291,6 +291,6 @@ build
     poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
     <source
         id="mp4"
-        src="./images/Flashing.mp4"
+        src="./images/FirstCode/Flashing.mp4"
         type="video/mp4">
 </video>
