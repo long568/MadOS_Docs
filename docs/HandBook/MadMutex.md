@@ -159,7 +159,7 @@ MadMutexCB_t* madDoMutexCreate(MadU8 type)
 | :-| :-|
 | type | MAD_MUTEX_RECURSIVE |
 
-## madMutexInit()
+## madMutexInit(mutex)
 ```c
 MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
 ```
@@ -167,7 +167,7 @@ MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
 | :-| :-|
 | type | MAD_MUTEX_NORMAL |
 
-## madMutexInitRecursive()
+## madMutexInitRecursive(mutex)
 ```c
 MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
 ```
