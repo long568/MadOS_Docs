@@ -17,8 +17,20 @@
 编辑app_switcher.sh后记得运行config及rebuild任务，以便正确重构新项目。
 :::
 
-## 标准输出设备
-新建 **DevTty.c** 并加入以下代码:
+## 标准输出
+### 设备文件
+新建 **DevTty.c** (或从其他App拷贝)
+``` bash
+lesson002
+├─ CfgApp.mk # 项目配置
+├─ CfgDevs.c # 设备列表
+├─ CfgUser.h # 用户配置
+├─ DevTty.c  # 标准输出设备文件
+├─ main.c    # 工程源码(主文件)
+└─ Makefile  # 编译文件
+```
+
+### 设备描述
 ```c
 #include <stdarg.h>
 #include <stdio.h>
@@ -56,8 +68,9 @@ static const mUsartChar_InitData_t initData = {
 MadDev_t Tty0 = { "tty0", &dev, &initData, &MadDrvTty, MAD_DEV_CLOSED, NULL };
 ```
 :::tip
-通常，设备描述文件由MadOS提供或由驱动工程师制作。   
-设备描述文件中包含默认的初始化参数，对于tty设备，用户只需关心:
+MadOS使用设备文件管理设备，设备文件与硬件平台相关。    
+通常，设备文件由MadOS提供或由驱动工程师制作，app开发者无需关心底层细节。   
+设备文件中包含默认的初始化参数，对于tty设备，用户只需关心:
 | 功能 | 说明 |
 | :-| :-|
 | 波特率 | 按需设置 |
@@ -68,7 +81,7 @@ MadDev_t Tty0 = { "tty0", &dev, &initData, &MadDrvTty, MAD_DEV_CLOSED, NULL };
 | 缓冲区尺寸 | 按需设置(通常无需关心) |
 :::
 
-## 设备列表
+### 设备列表
 将标准输出设备(**Tty0**)加入设备列表(**CfgDevs.c**):
 ```c
 #include "MadDev.h"
@@ -80,13 +93,14 @@ MadDev_t *DevsList[] = {
     MNULL
 };
 ```
-:::tip
-MadOS使用设备描述文件管理设备，设备描述文件跟硬件平台相关。   
-MadOS默认将设备列表的第一个设备作为标准输出。
+:::tip  
+MadOS默认将设备列表的第一个设备作为标准输出。   
+使用设备列表，read、write等原子操作中，可一步定位设备，大幅提升读写效率。
 :::
 
-## 修改main()
-为了调试方面，我们把基本的硬件初始化全部放在**main**函数前面。
+## 修改源码
+### main()
+为后续调试方面，我们把基本的硬件初始化都放在前部。
 ```c
 int main()
 {
@@ -119,16 +133,16 @@ int main()
 } // 以上是MadOS的启动过程，初学者不必深究，随后的学习中会逐步了解其原理
 ```
 
-## 修改madStartup()
+### madStartup()
 在线程中加入标准输出设备初始化及打印函数。
 ```c
 static void madStartup(MadVptr exData)
 {
     // 初始化SysTick，脉动间隔1ms。
     madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
-
     // 初始化 tty0 用作标准输出
     MAD_LOG_INIT();
+
     // 输出 Hello World !
     printf("Hello World !\n");
     
@@ -138,7 +152,19 @@ static void madStartup(MadVptr exData)
 }
 ```
 
-## 查看输出
-先用usb线连接**开发版**调试接口(J16)与**开发主机**，并启动串口调试工具。  
-再从vscode中启动调试: 
+## 调试程序
+### 设置串口工具
+连接**开发版**的调试串口(J16)与**开发主机**的USB接口，并启动串口调试工具。  
+:::tip
+默认串口参数:
+| 功能 | 说明 |
+| :-| :-|
+| 波特率 | 115200 |
+| 数据位 | 8 |
+| 停止位 | 1 |
+| 校验方式 | 无 |
+:::
+
+### 启动调试
+从vscode中启动调试，可在串口调试工具中看到输出: 
 ![HelloWorld](./images/HelloWorld/HelloWorld.png)
