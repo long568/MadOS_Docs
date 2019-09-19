@@ -27,6 +27,7 @@ MadOS
 │  └─ ...          # - : 未来，我们将开放更多示例供开发者参考。
 ├─ arch/           # n : MCU架构相关源码
 ├─ build/          # n : 编译过程文件存放处(源码编译时自动生成)
+├─ device/         # n : 设备模块源码
 ├─ driver/         # n : 驱动源码
 ├─ kernel/         # n : 内核源码
 ├─ library/        # n : 第三方库源码
@@ -41,7 +42,7 @@ MadOS
 └─ rules.mk        # n : 编译规则定义
 ```
 ::: tip
-- 如果您是操作系统爱好者，也许对 **arch、kernel、driver** 中的内容会感兴趣。  
+- 如果您是操作系统爱好者，也许对 **arch、kernel、device、driver** 中的内容会感兴趣。  
 - 如果您是初学者、开发者，则只需关心 **app** ，即您的项目源码，以便快速实现想法。  
 - MadOS尚未包含某些驱动或第三方库，如有需要，您可:
     - 联系 [我们](/Story/) 进行添加
@@ -115,11 +116,13 @@ enum {
 // 中断优先级统一于此处枚举，便于高级开发者查阅、更改。
 // 优先级1、15为MadOS内部保留，其余优先级可供项目使用。
 enum {
-    ISR_PRIO_SYSTICK = 1,
+    ISR_PRIO_SYSTICK    = 1,
     ISR_PRIO_ARCH_MEM,
-    ISR_PRIO_IP101A,
+    ISR_PRIO_DISK,
+	ISR_PRIO_ETH,
+    ISR_PRIO_DEV_USART,
     ISR_PRIO_TTY_USART,
-    ISR_PRIO_PENDSV  = 15
+    ISR_PRIO_PENDSV     = 15
 };
 // 堆空间定义(硬件相关)
 #define MAD_OS_STACK_SIZE (56 * 1024)
@@ -228,7 +231,7 @@ void delay(int i) { while(i--); }
 madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
 ```
 ``` c
-madTimeDly(3600 * 24 * 90);
+madTimeDly(1000 * 3600 * 24 * 90);
 ```
 :::
 
@@ -256,11 +259,13 @@ Building ... Done.
 build
 ├─ app/         # 存放项目相关编译过程文件
 ├─ arch/        # 存放芯片相关编译过程文件
+├─ dev/         # 存放设备相关编译过程文件
 ├─ drv/         # 存放驱动相关编译过程文件
 ├─ kernel/      # 存放内核相关编译过程文件
 ├─ HiMadOS.elf  # 调试文件
 ├─ HiMadOS.hex  # 烧录文件
 ├─ libarch.a    # 芯片库文件
+├─ libdev.a     # 设备库文件
 ├─ libdrv.a     # 驱动库文件
 └─ libkernel.a  # 内核库文件
 ```
