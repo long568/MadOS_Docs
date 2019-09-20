@@ -4,17 +4,20 @@
 在 **MadOS** 的设计中，每个线程的信息都记录在一个线程控制块中: 
 ```c
 typedef struct _MadTCB_t {
-    MadStk_t  *pStk;         // 线程堆栈指针
-    MadU8     prio;          // 线程优先级
-    MadU8     state;         // 线程当前状态
-    MadTim_t  timeCnt;       // 线程延时计数值
-    MadTim_t  timeCntRemain; // 线程恢复时，timeCnt 的剩余值。
-    MadU8     *msg;          // 线程所获得的消息(用于消息队列模块)
-    MadUint   eventMask;     // 线程事件掩码(用于事件控制模块)
-    MadU16    rdyg_bit;      // 线程优先级组位
-    MadU16    rdy_bit;       // 线程优先级位
-    MadRdyG_t *xCB;          // 线程正在等待的就绪条件的就绪表指针
-    MadU8     err;           // 线程恢复时，记录产生的错误。
+    // Kernel
+    MadStk_t  *pStk;
+    MadU8     prio;
+    MadU8     state;
+    MadTim_t  timeCnt;
+    MadTim_t  timeCntRemain;
+    MadVptr   msg;
+    MadUint   eventMask;
+    MadU16    rdyg_bit;
+    MadU16    rdy_bit;
+    MadRdyG_t *xCB;
+    MadU8     err;
+    // Posix
+    int       posix_errno;
 } MadTCB_t;
 ```
 ::: tip

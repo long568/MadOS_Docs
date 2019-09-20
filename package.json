@@ -20,6 +20,6 @@
         "@iktakahiro/markdown-it-katex": "^3.1.0",
         "markdown-it": "^8.4.2",
         "markdown-it-footnote": "^3.0.2",
-        "vuepress": "^1.0.2"
+        "vuepress": "^1.1.0"
     }
 }
