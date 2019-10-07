@@ -85,10 +85,12 @@ lesson001
 ### CfgApp.mk
 ``` makefile
 # MCU架构配置
-export MCU_ARCH   = armv7-m
-export MCU_VER    = cortex-m3
-export MCU_PREFIX = stm32f10x
-export MCU_SUFFIX = cl
+export MCU_ARCH     = armv7-m
+export MCU_VER      = cortex-m3
+export MCU_PREFIX   = stm32f10x
+export MCU_SUFFIX   = cl
+export MCU_RAM_SIZE = 0x10000
+export MCU_FLS_SIZE = 256K
 # 工程特定编译选项
 export PRJ_CFLAGS  = -Os
 export PRJ_LDFLAGS = --specs=nano.specs
@@ -225,13 +227,9 @@ static void madStartup(MadVptr exData)
 void delay(int i) { while(i--); }
 ```
 - MadOS环境，**SysTick** 初始化后提供了精准的**心跳**，根据**心跳**的频率可得精准延时。
-    - 运行90天，实测误差小于1微秒($1 us = 10^{-6} s$)
-
+    - 运行30天，实测误差小于1微秒($1 us = 10^{-6} s$)
 ``` c
-madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
-```
-``` c
-madTimeDly(1000 * 3600 * 24 * 90);
+madTimeDly(1000 * 3600 * 24 * 30); // 通常，madTimeDly以ms为单位。
 ```
 :::
 

@@ -70,6 +70,10 @@ sudo apt-get install openocd
 
 ## 安装代码编辑器
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
+::: tip
+- 设置环境变量后，需重启VSCode，以使其加载新环境变量。
+- Windows平台可能需以管理员身份运行VSCode，以使其可调用工具链。
+:::
 
 ### 安装 VSCode 扩展
 | 扩展名 | 扩展标识符 | 发布者名称 |
