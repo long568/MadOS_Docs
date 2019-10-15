@@ -31,3 +31,12 @@ void madTimeDly (MadTim_t timeCnt)
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | timeCnt  | in | 欲延迟的时钟值 |
+
+## madTimeNow
+```c
+MadTim_t madTimeNow(void)
+```
+返回系统自启动以来经过的Systick数(通常以毫秒为单位)
+| 返回值 | 说明 |
+| :-:| :-|
+| x | Systick数 |

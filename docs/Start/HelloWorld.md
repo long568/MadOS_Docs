@@ -12,7 +12,13 @@
 ![Paste](./images/HelloWorld/Rename.png)
 ### Switch
 最后，在app_switcher.sh中添加并切换至lesson02项目:
-![AddApp](./images/HelloWorld/AddApp.png)
+<!-- ![AddApp](./images/HelloWorld/AddApp.png) -->
+```sh
+# export MADOS_WORKING_APP=LoKernel
+# export MADOS_WORKING_APP=LoNode
+# export MADOS_WORKING_APP=lesson001
+export MADOS_WORKING_APP=lesson002
+```
 :::tip
 编辑**app_switcher.sh**后记得运行**config**及**rebuild**任务，以便正确重构新项目。
 :::
@@ -35,14 +41,13 @@ device
 #include <stdio.h>
 #include "MadDev.h"
 #include "usart_char.h"
-#include "Stm32Tools.h"
 #include "CfgUser.h"
 // 定义底层接口
-static mUsartChar_t dev;
-// 定义中断服务
-static void Dev_Irq_Handler(void) { mUsartChar_Irq_Handler(&dev); }
-// 底层接口初始化参数
-static const mUsartChar_InitData_t initData = {
+static mUsartChar_t port;
+// 定义中断函数
+static void Dev_Irq_Handler(void) { mUsartChar_Irq_Handler(&port); }
+// 定义底层接口初始化参数
+static const mUsartChar_InitData_t LowArgs = {
     USART2,
     DMA1_Channel7,
     DMA1_Channel6,
@@ -55,17 +60,22 @@ static const mUsartChar_InitData_t initData = {
     115200,              // 波特率
     USART_WordLength_8b, // 数据位
     USART_StopBits_1,    // 停止位
-    USART_Parity_No,     // 校验方式
+    USART_Parity_No,     // 校验模式
     USART_Mode_Rx | USART_Mode_Tx,
-    USART_HardwareFlowControl_None, // 硬件流控
+    USART_HardwareFlowControl_None, // 流控模式
     DMA_Priority_Low,
     DMA_Priority_Low,
-    0,   // 发送缓冲区尺寸(0，即不支持非阻塞方式发送。)
-    128, // 接收缓冲区尺寸
     Dev_Irq_Handler
 };
+// 定义设备初始化参数
+static const MadDevArgs_t Args = {
+    MAD_WAITQ_DEFAULT_SIZE, // 等待队列长度
+    128,                    // 发送缓存尺寸
+    128,                    // 接收缓存尺寸
+    &LowArgs
+};
 // 定义设备
-MadDev_t Tty = { "tty", &dev, &initData, &MadDrvUartChar, MAD_DEV_CLOSED, NULL };
+MadDev_t Tty = { "tty", &port, &Args, &MadDrvUartChar, NULL };
 ```
 :::tip
 MadOS使用设备文件管理设备，设备文件与硬件平台相关。    
@@ -78,7 +88,8 @@ MadOS使用设备文件管理设备，设备文件与硬件平台相关。
 | 停止位 | 按需设置 |
 | 校验方式 | 按需设置 |
 | 硬件流控 | 按需设置(通常无需关心) |
-| 缓冲区尺寸 | 按需设置(通常无需关心) |
+| 等待队列 | 按需设置(通常无需关心) |
+| 缓存尺寸 | 按需设置(通常无需关心) |
 :::
 
 ### 设备列表
@@ -89,12 +100,11 @@ MadOS使用设备文件管理设备，设备文件与硬件平台相关。
 extern MadDev_t Tty;
 
 MadDev_t *DevsList[] = {
-    &Tty, // Tty must be the FIRST element of the DevsList.
+    &Tty,
     MNULL
 };
 ```
 :::tip  
-MadOS默认将设备列表的第一个设备作为标准输出。   
 使用设备列表，read、write等原子操作中，可一步定位设备，大幅提升读写效率。
 :::
 
@@ -118,9 +128,9 @@ int main()
     
     do { // 25MHz-Output For IP101A
         GPIO_InitTypeDef gpio;
-        gpio.GPIO_Mode = GPIO_Mode_AF_PP;
+        gpio.GPIO_Mode  = GPIO_Mode_AF_PP;
         gpio.GPIO_Speed = GPIO_Speed_50MHz;
-        gpio.GPIO_Pin = GPIO_Pin_8;
+        gpio.GPIO_Pin   = GPIO_Pin_8;
         GPIO_Init(GPIOA, &gpio);
         RCC_MCOConfig(RCC_MCO_HSE);
     } while(0);
@@ -140,15 +150,16 @@ static void madStartup(MadVptr exData)
 {
     // 初始化SysTick，脉动间隔1ms。
     madInitSysTick(DEF_SYS_TICK_FREQ, DEF_TICKS_PER_SEC);
-
+    // 初始化标准C库
+    Newlib_Init();
     // 初始化 tty 用作标准输出
     MAD_LOG_INIT();
-
     // 输出 Hello World !
     printf("Hello World !\n");
-    
-    while(1) { // 线程主循环
-        madTimeDly(0xFFFFFFFF); // 近乎无限休眠
+    // 线程主循环
+    while(1) {
+        // 近乎无限休眠
+        madTimeDly(0xFFFFFFFF);
 	}
 }
 ```

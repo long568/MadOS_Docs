@@ -36,12 +36,29 @@ madTimeDly
 
 madSemCreateCarefully
 madSemCreate
+madSemCreateN
 madSemInitCarefully
 madSemInit
+madSemInitN
 madSemWait
 madSemWaitInCritical
 madDoSemDelete
 madSemDelete
+
+madDoMutexCreate
+madMutexCreate
+madMutexCreateN
+madMutexCreateRecursive
+madMutexCreateRecursiveN
+madDoMutexInit
+madMutexInit
+madMutexInitN
+madMutexInitRecursive
+madMutexInitRecursiveN
+madMutexWait
+madMutexWaitInCritical
+madDoMutexDelete
+madMutexDelete
 
 madMsgQCreateCarefully
 madMsgQCreate

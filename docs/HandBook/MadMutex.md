@@ -28,32 +28,48 @@ madMutexWait(&mutex, 0);  // 线程阻塞
 
 ## madDoMutexCreate
 ```c
-MadMutexCB_t* madDoMutexCreate(MadU8 type)
+MadMutexCB_t* madDoMutexCreate(MadU8 type, MadU8 flag)
 ```
 新建互斥信号。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | type | in | 互斥信号类型 |
+| flag | in | 互斥信号初始状态 |
 
 | 返回值 | 说明 |
 | :-:| :-|
 | 0  | 失败 |
 | NZ | 成功(指向互斥信号控制块的指针) |
 
+:::tip flag
+| 值 | 说明 |
+| :-| :-|
+| 0 | 初始处于锁定状态 |
+| x | 初始处于解锁状态 |
+:::
+
 ## madDoMutexInit
 ```c
-MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
+MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
 ```
 初始化互斥信号。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | mutex | in | 互斥信号 |
 | type  | in | 互斥信号类型 |
+| flag  | in | 互斥信号初始状态 |
 
 | 返回值 | 说明 |
 | :-:| :-|
 | MFALSE | 失败 |
 | MTRUE  | 成功 |
+
+:::tip flag
+| 值 | 说明 |
+| :-| :-|
+| 0 | 初始处于锁定状态 |
+| x | 初始处于解锁状态 |
+:::
 
 ## madMutexSetType
 ```c
@@ -145,35 +161,75 @@ void madDoMutexDelete(MadMutexCB_t **pMutex, MadBool opt)
 
 ## madMutexCreate()
 ```c
-MadMutexCB_t* madDoMutexCreate(MadU8 type)
+MadMutexCB_t* madDoMutexCreate(MadU8 type, MadU8 flag)
 ```
 | 参数 | 值 |
 | :-| :-|
 | type | MAD_MUTEX_NORMAL |
+| flag | 1 |
+
+## madMutexCreateN()
+```c
+MadMutexCB_t* madDoMutexCreate(MadU8 type, MadU8 flag)
+```
+| 参数 | 值 |
+| :-| :-|
+| type | MAD_MUTEX_NORMAL |
+| flag | 0 |
 
 ## madMutexCreateRecursive()
 ```c
-MadMutexCB_t* madDoMutexCreate(MadU8 type)
+MadMutexCB_t* madDoMutexCreate(MadU8 type, MadU8 flag)
 ```
 | 参数 | 值 |
 | :-| :-|
 | type | MAD_MUTEX_RECURSIVE |
+| flag | 1 |
+
+## madMutexCreateRecursiveN()
+```c
+MadMutexCB_t* madDoMutexCreate(MadU8 type, MadU8 flag)
+```
+| 参数 | 值 |
+| :-| :-|
+| type | MAD_MUTEX_RECURSIVE |
+| flag | 0 |
 
 ## madMutexInit(mutex)
 ```c
-MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
+MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
 ```
 | 参数 | 值 |
 | :-| :-|
 | type | MAD_MUTEX_NORMAL |
+| flag | 1 |
+
+## madMutexInitN(mutex)
+```c
+MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
+```
+| 参数 | 值 |
+| :-| :-|
+| type | MAD_MUTEX_NORMAL |
+| flag | 0 |
 
 ## madMutexInitRecursive(mutex)
 ```c
-MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type)
+MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
 ```
 | 参数 | 值 |
 | :-| :-|
 | type | MAD_MUTEX_RECURSIVE |
+| flag | 1 |
+
+## madMutexInitRecursiveN(mutex)
+```c
+MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
+```
+| 参数 | 值 |
+| :-| :-|
+| type | MAD_MUTEX_RECURSIVE |
+| flag | 0 |
 
 ## madMutexRelease(pMutex)
 ```c

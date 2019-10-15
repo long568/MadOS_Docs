@@ -18,12 +18,10 @@
 MadOS
 ├─ .vscode/        # n : VSCode 相关配置
 ├─ app/            # y : 项目源码(其中每个子目录为一个项目)
+│  ├─ backup       # n : 旧版MadOS中的工程备份。
 │  ├─ lesson001/   # - : MadOS应用教程第一课，稍后我们会展开分析它。
-│  ├─ LoArm/       # - : 遥控机械臂，包含步进 / 直流电机驱动、网络通信逻辑，尚需完善。
-│  ├─ LoIoT/       # - : 物联网节点，包含Lora模块驱动，云端传输、传感器读取逻辑。
+│  ├─ LoKernel/    # n : MadOS内核压力测试。
 │  ├─ LoNode/      # - : LoBoard开发板配套例程，不断完善中。
-│  ├─ test_kernel/ # n : MadOS功能压力测试。
-│  ├─ test_module/ # - : LoBoard开发板配套例程，后续将转移至 LoNode 中。
 │  └─ ...          # - : 未来，我们将开放更多示例供开发者参考。
 ├─ arch/           # n : MCU架构相关源码
 ├─ build/          # n : 编译过程文件存放处(源码编译时自动生成)
@@ -53,14 +51,11 @@ MadOS
 ## 切换项目
 在 **MadOS** 根目录下有名为 **app_switcher.sh** 的脚本，用以切换当前工作项目: 
 ``` bash
-# export MADOS_WORKING_APP=test_kernel
-# export MADOS_WORKING_APP=test_module
-export MADOS_WORKING_APP=lesson001
-# export MADOS_WORKING_APP=LoArm
-# export MADOS_WORKING_APP=LoIoT
+# export MADOS_WORKING_APP=LoKernel
 # export MADOS_WORKING_APP=LoNode
+export MADOS_WORKING_APP=lesson001
 ```
-将 **lesson001** 前的注释去掉，并注释余项目，然后在VSCode中运行 **config** 任务：
+将 **lesson001** 前的注释去掉，并注释余项目，然后在**VSCode**中运行 **config** 任务：
 ::: tip
 终端 -> 运行任务 -> config
 ``` bash
@@ -262,6 +257,7 @@ build
 ├─ kernel/      # 存放内核相关编译过程文件
 ├─ HiMadOS.elf  # 调试文件
 ├─ HiMadOS.hex  # 烧录文件
+├─ HiMadOS.ld   # 链接脚本
 ├─ libarch.a    # 芯片库文件
 ├─ libdev.a     # 设备库文件
 ├─ libdrv.a     # 驱动库文件

@@ -24,6 +24,7 @@
 | MAD_ERR_TIMEOUT       | 超时 |
 | MAD_ERR_EXITED        | 线程退出 |
 | MAD_ERR_SEM_INVALID   | 信号量无效 |
+| MAD_ERR_MUTEX_INVALID | 互斥信号无效 |
 | MAD_ERR_MSGQ_INVALID  | 消息队列无效 |
 | MAD_ERR_MSGQ_EMPTY    | 消息队列为空 |
 | MAD_ERR_MSGQ_FULL     | 消息队列已满 |

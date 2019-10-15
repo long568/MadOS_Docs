@@ -9,20 +9,6 @@
 | MadSemCB_t*  | 信号量 |
 | MadSemCB_t** | 信号量指针 |
 
-## madSemCreate
-```c
-MadSemCB_t* madSemCreate (MadU16 cnt)
-```
-新建信号量。
-| 参数名 | 方向 | 说明 |
-| :-| :-:| :-|
-| cnt | in | 信号量的初始值(也是最大值) |
-
-| 返回值 | 说明 |
-| :-:| :-|
-| 0  | 失败 |
-| NZ | 成功(指向信号量控制块的指针) |
-
 ## madSemCreateCarefully
 ```c
 MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
@@ -36,7 +22,7 @@ MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
 | 返回值 | 说明 |
 | :-:| :-|
 | 0  | 失败 |
-| NZ | 成功(指向信号量控制块的指针) |
+| NZ | 成功(信号量) |
 
 ::: tip
 | 调用 | 说明 |
@@ -47,30 +33,6 @@ MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
 | madSemCreate(0)             | 生成特殊信号量(详见 [2.7](/HandBook/BriefDesign.md)) |
 | madSemCreateCarefully(0, 1) | 生成初始资源数为 0 的互斥信号量 |
 :::
-
-## madSemInit
-```c
-MadBool madSemInit (MadSemCB_t *sem, MadU16 cnt)
-```
-初始化信号量。
-::: tip
-```c
-// sem_cb作局部变量(节省动态分配内存的时间)
-// 不推荐将sem_cb定义为全局变量
-// 不可对sem调用信号量删除功能
-MadSemCB_t sem_cb, *sem;
-sem = &sem_cb;
-madSemInit(sem, cnt);
-```
-:::
-| 参数名 | 方向 | 说明 |
-| :-| :-:| :-|
-| cnt | in | 信号量的初始值(也是最大值) |
-
-| 返回值 | 说明 |
-| :-:| :-|
-| MFALSE | 失败 |
-| MTRUE  | 成功 |
 
 ## madSemInitCarefully
 ```c
@@ -148,6 +110,31 @@ MadBool madSemCheck (MadSemCB_t **pSem)
 | MFALSE | 无空闲资源 |
 | MTRUE  | 有空闲资源 |
 
+## madDoSemShut
+```c
+MadSemCB_t* madDoSemShut(MadSemCB_t **pSem, MadBool opt)
+```
+终结信号量
+:::tip
+**madDoSemShut**不释放信号量所占用的内存空间，而是将其返回给调用者。
+:::
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| pSem | in | 信号量指针 |
+| opt  | in | 是否恢复等待线程 |
+
+| 返回值 | 说明 |
+| :-:| :-|
+| 0 | 无此信号量 |
+| x | 终结信号量 |
+
+::: tip opt
+| 值 | 说明 |
+| :-| :-|
+| MTRUE  | 以 MAD_ERR_SEM_INVALID 为 err 释放信号量(恢复所有等待线程) |
+| MFALSE | 忽略所有等待线程 |
+:::
+
 ## madDoSemDelete
 ```c
 void madDoSemDelete (MadSemCB_t **pSem, MadBool opt)
@@ -164,6 +151,38 @@ void madDoSemDelete (MadSemCB_t **pSem, MadBool opt)
 | MTRUE  | 以 MAD_ERR_SEM_INVALID 为 err 释放信号量(恢复所有等待线程) |
 | MFALSE | 忽略所有等待线程 |
 :::
+
+## madSemCreate(cnt)
+```c
+MadSemCB_t*  madSemCreateCarefully(MadU16 cnt, MadU16 max);
+```
+| 参数 | 值 |
+| :-| :-|
+| max | cnt |
+
+## madSemCreateN(max)
+```c
+MadSemCB_t*  madSemCreateCarefully(MadU16 cnt, MadU16 max);
+```
+| 参数 | 值 |
+| :-| :-|
+| cnt | 0 |
+
+## madSemInit(sem, cnt)
+```c
+MadBool madSemInitCarefully(MadSemCB_t *sem, MadU16 cnt, MadU16 max)
+```
+| 参数 | 值 |
+| :-| :-|
+| max | cnt |
+
+## madSemInitN(sem, max)
+```c
+MadBool madSemInitCarefully(MadSemCB_t *sem, MadU16 cnt, MadU16 max)
+```
+| 参数 | 值 |
+| :-| :-|
+| cnt | 0 |
 
 ## madSemRelease(pSem)
 ```c
