@@ -11,6 +11,7 @@
 | MAD_THREAD_PEND      | 挂起 |
 | MAD_THREAD_TIMEDLY   | 延时 |
 | MAD_THREAD_WAITSEM   | 等待信号量 |
+| MAD_THREAD_WAITMUTEX | 等待互斥信号 |
 | MAD_THREAD_WAITMSG   | 等待消息 |
 | MAD_THREAD_WAITEVENT | 等待事件 |
 ::: tip
