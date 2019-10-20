@@ -17,13 +17,15 @@ MadOS 的配置分为两个部分，线程优先级分配与平台相关性配�
 ### MadArch.h    
 | 名称 | 必须 | 说明 |
 | :-| :-:| :-|
-| typedef ... ... ;      | y | 依据软件平台定义数据类型 |
-| DEF_SYS_TICK_FREQ      | n | 硬件 System Tick 时钟 |
-| DEF_TICKS_PER_SEC      | n | 内核 System Tick 频率(建议设置 1000) |
-| madSched()             | y | 切换线程(触发软件中断) |
-| madEnterCritical(cpsr) | y | 进入临界区 |
-| madExitCritical(cpsr)  | y | 离开临界区 |
-| madUnRdyMap(res, src)  | y | 解析优先级 |
+| typedef ... ... ;     | y | 依据软件平台定义数据类型 |
+| DEF_SYS_TICK_FREQ     | n | 硬件 System Tick 时钟 |
+| DEF_TICKS_PER_SEC     | n | 内核 System Tick 频率(默认 1000) |
+| madCSInit()           | y | 临界区初始化 |
+| madCSDecl()           | y | 声明临界区变量 |
+| madCSLock(cpsr)       | y | 进入临界区 |
+| madCSUnlock(cpsr)     | y | 离开临界区 |
+| madSched()            | y | 切换线程(触发软件中断) |
+| madUnRdyMap(res, src) | y | 解析优先级 |
 
 ### MacConfig.h
 | 名称 | 必须 | 说明 |
@@ -32,10 +34,8 @@ MadOS 的配置分为两个部分，线程优先级分配与平台相关性配�
 | MAD_THREAD_NUM_MAX   | y | 最大线程数(使用者根据需要确定) |
 | MAD_IDLE_STK_SIZE    | y | 空闲线程堆栈尺寸 |
 | MAD_STATIST_STK_SIZE | n | 统计线程堆栈尺寸 |
-| MAD_AUTO_RECYCLE_RES | n | madThreadDeleteAndClear自动回收动态内存[^1] |
-| MAD_CPY_MEM_BY_DMA   | n | 利用硬件 DMA 实现内存的复制与设置[^2] |
+| MAD_CPY_MEM_BY_DMA   | n | 利用硬件 DMA 实现内存的复制与设置[^1] |
 | MAD_LOG_INIT()       | n | 初始化 MAD_LOG 所需的环境 |
 | MAD_LOG(...)         | n | 打印信息 |
 | MAD_USE_IDLE_HOOK    | n | 使用空闲线程的钩子接口 |
-[^1]: 线程运行过程中调用 madMemMalloc 分配的动态内存。
-[^2]: DMA需要依赖硬件中断，相关函数不可在临界区中调用。
+[^1]: DMA需要依赖硬件中断，相关函数不可在临界区中调用。

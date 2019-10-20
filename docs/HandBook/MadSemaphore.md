@@ -24,16 +24,6 @@ MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
 | 0  | 失败 |
 | NZ | 成功(信号量) |
 
-::: tip
-| 调用 | 说明 |
-| :-| :-|
-| madSemCreate(cnt)           | 等价于 madSemCreateCarefully(cnt, cnt) |
-| madSemCreate(MAD_U16_MAX)   | 生成资源数“无限”的信号量 |
-| madSemCreate(1)             | 生成互斥信号量 |
-| madSemCreate(0)             | 生成特殊信号量(详见 [2.7](/HandBook/BriefDesign.md)) |
-| madSemCreateCarefully(0, 1) | 生成初始资源数为 0 的互斥信号量 |
-:::
-
 ## madSemInitCarefully
 ```c
 MadBool madSemInitCarefully (MadSemCB_t *sem, MadU16 cnt, MadU16 max)
@@ -71,24 +61,23 @@ MadU8 madSemWait (MadSemCB_t **pSem, MadTim_t timOut)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ## madSemWaitInCritical
 ```c
-MadU8 madSemWaitInCritical (MadSemCB_t **pSem, MadTim_t timOut, MadCpsr_t *pCpsr)
+MadU8 madSemWaitInCritical (MadSemCB_t **pSem, MadTim_t timOut)
 ```
 等待信号量(谨慎使用)。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pSem   | in | 信号量指针 |
 | timOut | in | 等待超时的时间值(0则无时限) |
-| pCpsr  | io | 父级cpsr指针 |
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ::: tip
 - 在临界区内被调用
@@ -107,8 +96,8 @@ MadBool madSemCheck (MadSemCB_t **pSem)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MFALSE | 无空闲资源 |
-| MTRUE  | 有空闲资源 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ## madDoSemShut
 ```c
@@ -160,6 +149,16 @@ MadSemCB_t*  madSemCreateCarefully(MadU16 cnt, MadU16 max);
 | :-| :-|
 | max | cnt |
 
+::: tip
+| 调用 | 说明 |
+| :-| :-|
+| madSemCreate(cnt)           | madSemCreateCarefully(cnt, cnt) |
+| madSemCreate(MAD_U16_MAX)   | 生成资源数“无限”的信号量 |
+| madSemCreate(1)             | 生成互斥信号量 |
+| madSemCreate(0)             | 生成[特殊信号量](/HandBook/BriefDesign.md) |
+| madSemCreateCarefully(0, 1) | 生成初始资源数为 0 的互斥信号量 |
+:::
+
 ## madSemCreateN(max)
 ```c
 MadSemCB_t*  madSemCreateCarefully(MadU16 cnt, MadU16 max);
@@ -167,6 +166,12 @@ MadSemCB_t*  madSemCreateCarefully(MadU16 cnt, MadU16 max);
 | 参数 | 值 |
 | :-| :-|
 | cnt | 0 |
+
+::: tip
+| 调用 | 说明 |
+| :-| :-|
+| madSemCreateN(cnt) | madSemCreateCarefully(0, cnt) |
+:::
 
 ## madSemInit(sem, cnt)
 ```c
@@ -191,6 +196,14 @@ void madDoSemRelease (MadSemCB_t **pSem, MadU8 err)
 | 参数 | 值 |
 | :-| :-|
 | err | MAD_ERR_OK |
+
+## madSemShut(pSem)
+```c
+void madDoSemShut (MadSemCB_t **pSem, MadBool opt)
+```
+| 参数 | 值 |
+| :-| :-|
+| opt | MTRUE |
 
 ## madSemDelete(pSem)
 ```c

@@ -103,24 +103,23 @@ MadU8 madMutexWait(MadMutexCB_t **pMutex, MadTim_t timOut)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ## madMutexWaitInCritical
 ```c
-MadU8 madMutexWaitInCritical(MadMutexCB_t **pMutex, MadTim_t timOut, MadCpsr_t *pCpsr)
+MadU8 madMutexWaitInCritical(MadMutexCB_t **pMutex, MadTim_t timOut)
 ```
 等待互斥信号(谨慎使用)。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pMutex | in | 互斥信号指针 |
 | timOut | in | 等待超时的时间值(0则无时限) |
-| pCpsr  | io | 父级cpsr指针 |
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ::: tip
 - 在临界区内被调用
@@ -139,8 +138,8 @@ MadBool madMutexCheck(MadMutexCB_t **pMutex)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MFALSE | 无空闲资源 |
-| MTRUE  | 有空闲资源 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得资源 |
 
 ## madDoMutexDelete
 ```c

@@ -40,8 +40,8 @@ MadU8 madMsgCheck (MadMsgQCB_t **pMsgQ, MadVptr *msg)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_MSGQ_EMPTY | 消息队列为空 |
-| MAD_ERR_OK         | 获取消息成功 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得消息 |
 
 ## madMsgWait
 ```c
@@ -56,8 +56,8 @@ MadU8 madMsgWait (MadMsgQCB_t **pMsgQ, MadVptr *msg, MadTim_t to)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 获取消息失败(错误代码) |
-| MAD_ERR_OK | 获取消息成功 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 获得消息 |
 
 ## madDoMsgSend
 ```c

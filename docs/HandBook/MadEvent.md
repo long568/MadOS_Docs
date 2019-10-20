@@ -54,8 +54,8 @@ MadU8 madEventWait (MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 事件触发 |
 
 ## madEventDoCheck
 ```c
@@ -70,8 +70,8 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MAD_ERR_x  | 错误(代码) |
-| MAD_ERR_OK | 正常 |
+| MAD_ERR_x  | 错误代码 |
+| MAD_ERR_OK | 事件触发 |
 
 ## madDoEventTrigger
 ```c

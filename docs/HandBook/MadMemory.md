@@ -29,6 +29,10 @@ MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
 | 0  | 失败 |
 | NZ | 成功(内存块首地址) |
 
+::: tip
+**malloc(0)** 返回0
+:::
+
 ## madMemCalloc
 ```c
 MadVptr madMemCalloc (MadSize_t n, MadSize_t size)
@@ -58,6 +62,10 @@ MadVptr madMemRealloc (MadVptr p, MadSize_t size)
 | :-:| :-|
 | 0  | 失败 |
 | NZ | 成功(内存块首地址) |
+
+::: tip
+**realloc** 调用失败时并不会释放**p**所指向的内存
+:::
 
 ## madMemFree
 ```c
@@ -97,6 +105,17 @@ void madMemCpy (MadVptr dst, const MadVptr src, MadSize_t len)
 | src | in | 源数据首地址 |
 | len | in | 数据长度(以字节为单位) |
 
+## madMemSet
+```c
+void madMemSet (MadVptr dst, MadU8 value, MadSize_t len)
+```
+数据设置。
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| dst   | in | 目标数据首地址 |
+| value | in | 欲设置的值 |
+| len   | in | 数据长度(以字节为单位) |
+
 ## madMemCmp
 ```c
 void madMemCmp (MadVptr dst, const MadVptr src, MadSize_t len)
@@ -114,48 +133,6 @@ void madMemCmp (MadVptr dst, const MadVptr src, MadSize_t len)
 | 0  | dst 等于 src |
 | -1 | dst 小于 src |
 
-## madMemSet
-```c
-void madMemSet (MadVptr dst, MadU8 value, MadSize_t len)
-```
-数据设置。
-| 参数名 | 方向 | 说明 |
-| :-| :-:| :-|
-| dst   | in | 目标数据首地址 |
-| value | in | 欲设置的值 |
-| len   | in | 数据长度(以字节为单位) |
-
-## madMemChangeOwner
-```c
-// MAD_AUTO_RECYCLE_RES
-void madMemChangeOwner (const MadU8 oldOwner, const MadU8 newOwner)
-```
-改变内存块的拥有者(线程)。
-| 参数名 | 方向 | 说明 |
-| :-| :-:| :-|
-| oldOwner | in | 原拥有者 ID (原线程优先级) |
-| newOwner | in | 新拥有者 ID (新线程优先级) |
-
-## madMemClearRes
-```c
-// MAD_AUTO_RECYCLE_RES
-void madMemClearRes (const MadU8 owner)
-```
-清除所有者(线程)占用的内存资源。用户不可手动调用该函数。
-| 参数名 | 方向 | 说明 |
-| :-| :-:| :-|
-| owner | in | 拥有者 ID (线程优先级) |
-
-<!-- ## 简化功能宏
-| 宏名 | 函数 | 说明 |
-| :-| :-| :-|
-| madMemMalloc(n)               | madMemMallocCarefully | 忽略nReal |
-| madMemFreeNull(p)             | madMemFree            | 释放后将p置0 |
-| madMemCpyByDMA(dst, src, len) | madArchMemCpy[^1]     | MAD_CPY_MEM_BY_DMA[^2] |
-| madMemSetByDMA(dst, val, len) | madArchMemSet         | MAD_CPY_MEM_BY_DMA |
-[^1]: 平台相关内存操作函数。
-[^2]: 若关闭MAD_CPY_MEM_BY_DMA，madMem\*ByDMA被madMem\*代替。 -->
-
 ## madMemMalloc(n)
 ```c
 MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
@@ -169,23 +146,3 @@ MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
 void madMemFree (MadVptr p);
 ```
 内存释放后将p置0。
-
-## madMemCpyByDMA(dst, src, len)
-```c
-// 开启 MAD_CPY_MEM_BY_DMA (硬件相关)
-MadVptr madArchMemCpy (MadVptr dst, const MadVptr src, MadSize_t len);
-```
-```c
-// 关闭 MAD_CPY_MEM_BY_DMA
-MadVptr madMemCpy (MadVptr dst, const MadVptr src, MadSize_t len);
-```
-
-## madMemSetByDMA(dst, val, len)
-```c
-// 开启 MAD_CPY_MEM_BY_DMA (硬件相关)
-MadVptr madArchMemSet (MadVptr dst, MadU8 value, MadSize_t len);
-```
-```c
-// 关闭 MAD_CPY_MEM_BY_DMA
-MadVptr madMemSet (MadVptr dst, MadU8 value, MadSize_t len);
-```

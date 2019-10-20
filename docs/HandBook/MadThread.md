@@ -24,7 +24,6 @@
 | 名称 | 说明 |
 | :-| :-|
 | MAD_THREAD_SELF     | 本线程(当前线程) |
-| MAD_THREAD_RESERVED | 保留线程(空闲线程) |
 
 ## MadOS 线程函数类型
 ```c
@@ -53,7 +52,8 @@ MadTCB_t* madThreadCreateCarefully (
     MadVptr     exData, 
     MadSize_t   size, 
     MadVptr     stk, 
-    MadU8       prio
+    MadU8       prio,
+    MadBool     run
 )
 ```
 新建线程。
@@ -64,6 +64,7 @@ MadTCB_t* madThreadCreateCarefully (
 | size   | in | 线程所需的堆栈尺寸(以字节为单位) |
 | stk    | in | 用户自定义的堆栈首地址(0则自动分配) |
 | prio   | in | 线程优先级 |
+| run    | in | MTRUE: 线程立即执行 / MFALSE: 线程挂起 |
 
 | 返回值 | 说明 |
 | :-:| :-|
@@ -103,24 +104,16 @@ MadVptr madThreadDelete (MadU8 threadPrio)
 
 ## madThreaddDoDelete
 ```c
-// MAD_AUTO_RECYCLE_RES
-MadVptr madThreadDoDelete (MadU8 threadPrio, MadBool autoClear)
+MadVptr madThreadDoDelete (MadU8 threadPrio)
 ```
 删除线程。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | threadPrio | in | 欲删除线程的优先级 |
-| autoClear  | in | 是否自动释放线程占用的动态内存 |
 
 | 返回值 | 说明 |
 | :-:| :-|
 | msg | 线程msg (用户根据应用中所使用的内存分配机制进行回收) |
-
-<!-- ## 简化功能宏
-| 宏名 | 函数 | 说明 |
-| :-| :-| :-|
-| madThreadCreate(act, ed, sz, prio) | madThreadCreateCarefully | stk置0 |
-| madThreadDeleteAndClear(n)         | madThreaddDoDelete       | 自动释放线程资源 | -->
 
 ## madThreadCreate(act, ed, sz, prio)
 ```c
@@ -129,18 +122,27 @@ MadTCB_t* madThreadCreateCarefully (
     MadVptr     exData, 
     MadSize_t   size, 
     MadVptr     stk, 
-    MadU8       prio
+    MadU8       prio,
+    MadBool     run
 )
 ```
 | 参数 | 值 |
 | :-| :-|
 | stk | 0 |
+| run | MTRUE |
 
-## madThreadDeleteAndClear(n) 
+## madThreadCreateN(act, ed, sz, prio)
 ```c
-// MAD_AUTO_RECYCLE_RES
-MadVptr madThreadDoDelete (MadU8 threadPrio, MadBool autoClear)
+MadTCB_t* madThreadCreateCarefully ( 
+    MadThread_t act, 
+    MadVptr     exData, 
+    MadSize_t   size, 
+    MadVptr     stk, 
+    MadU8       prio,
+    MadBool     run
+)
 ```
 | 参数 | 值 |
 | :-| :-|
-| autoClear | MTRUE |
+| stk | 0 |
+| run | MFALSE |

@@ -37,11 +37,8 @@ madTimeDly
 madSemCreateCarefully
 madSemCreate
 madSemCreateN
-madSemInitCarefully
-madSemInit
-madSemInitN
 madSemWait
-madSemWaitInCritical
+madSemWaitInCritical /* 可在临界区内调用 / 谨慎使用!!! */
 madDoSemDelete
 madSemDelete
 
@@ -50,20 +47,16 @@ madMutexCreate
 madMutexCreateN
 madMutexCreateRecursive
 madMutexCreateRecursiveN
-madDoMutexInit
-madMutexInit
-madMutexInitN
-madMutexInitRecursive
-madMutexInitRecursiveN
 madMutexWait
-madMutexWaitInCritical
+madMutexWaitInCritical /* 可在临界区内调用 / 谨慎使用!!! */
 madDoMutexDelete
 madMutexDelete
 
 madMsgQCreateCarefully
 madMsgQCreate
 madMsgWait
-madDoMsgSend // 如有内建投递锁定信号量，则不能调用 madMsgSendBlock。
+madDoMsgSend
+madMsgSendBlock /* 如有内建投递锁定信号量则不能调用 */
 madDoMsgQDelete
 madMsgQDelete
 
