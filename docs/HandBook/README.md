@@ -14,6 +14,7 @@ sidebar: false
 - [内核.消息队列](/HandBook/MadMessage.md)
 - [内核.事件管理](/HandBook/MadEvent.md)
 - [内核.快速缓存](/HandBook/MadFastBuffer.md)
+- [内核.等待队列](/HandBook/MadWaitQueue.md)
 - [内核.API使用限制](/HandBook/MadApiUsage.md)
 - [启动范例](/HandBook/Startup.md)
 - [扩展.设备驱动](/HandBook/)
