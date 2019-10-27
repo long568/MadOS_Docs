@@ -96,7 +96,7 @@ export PRJ_LDFLAGS = --specs=nano.specs
 // 第一课中未启用任何设备，设备列表为空。
 #include "MadDev.h"
 MadDev_t *DevsList[] = {
-    MNULL
+    MAD_DEVP_END
 };
 ```
 

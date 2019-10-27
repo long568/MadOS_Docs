@@ -101,7 +101,7 @@ extern MadDev_t Tty;
 
 MadDev_t *DevsList[] = {
     &Tty,
-    MNULL
+    MAD_DEVP_END
 };
 ```
 :::tip  
