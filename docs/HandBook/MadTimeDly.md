@@ -6,7 +6,7 @@
 
 ## madInitSysTick
 ```c
-void  madInitSysTick (MadTim_t freq, MadTim_t ticks)
+void madInitSysTick (MadTim_t freq, MadTim_t ticks)
 ```
 初始化 System Tick。根据硬件实现。
 | 参数名 | 方向 | 说明 |
@@ -23,6 +23,19 @@ MadUint madSysTick (void)
 通常在 System Tick 中断函数中被调用。使用者不可调用该函数。
 :::
 
+## madTimeInit
+```c
+void madTimeInit (MadTim_t freq, MadTim_t ticks)
+```
+初始化时间管理模块。
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| freq  | in | MCU时钟频率 |
+| ticks | in | 每秒跳动次数 |
+::: tip  
+通常在 madInitSysTick 中被调用。使用者不可调用该函数。
+:::
+
 ## madTimeDly
 ```c
 void madTimeDly (MadTim_t timeCnt)
@@ -36,7 +49,16 @@ void madTimeDly (MadTim_t timeCnt)
 ```c
 MadTim_t madTimeNow(void)
 ```
-返回系统自启动以来经过的Systick数(通常以毫秒为单位)
+返回系统自启动以来经过的Systick数(毫秒为单位)
+| 返回值 | 说明 |
+| :-:| :-|
+| x | Systick数 |
+
+## madTimeOfDay
+```c
+MadU64 madTimeOfDay(void)
+```
+返回系统时间(毫秒为单位)
 | 返回值 | 说明 |
 | :-:| :-|
 | x | Systick数 |

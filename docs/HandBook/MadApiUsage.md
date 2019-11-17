@@ -14,6 +14,7 @@ madInitStatist // 必须在 madInitSysTick 之后，用户线程建立前调用�
 ## 不能手动调用的函数
 ```c
 madMemInit       // madOSInit 内部自动调用。
+madTimeInit      // madInitSysTick 内部自动调用。
 madThreadStkInit // madThreadCreateCarefully 内部自动调用。
 madSysTick       // System Tick 中断中自动调用。
 madMemClearRes   // madThreadDeleteAndClear 中自动调用。
@@ -64,6 +65,9 @@ madEventCreate
 madEventWait
 madDoEventDelete
 madEventDelete
+
+madWaitQInit
+madWaitQShut
 ```
 ::: tip
 以上函数可能导致线程阻塞。
