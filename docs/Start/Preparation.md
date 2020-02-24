@@ -34,6 +34,9 @@ source ~/.bash_profile # MacOSX
 ``` bash
 source ~/.bashrc       # Ubuntu
 ```
+::: tip
+如果使用zsh作为终端，用户配置文件为.zprofile。
+:::
 
 ### Windows  
 假设解压路径为: D:\DreamOn\MSYS2，设置用户环境变量:
