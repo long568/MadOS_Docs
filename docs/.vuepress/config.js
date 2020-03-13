@@ -15,7 +15,7 @@ module.exports = {
             href: 'https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css'
         }]
     ],
-    base: '/MadOS_Docs/',
+    base: '/doc/',
     markdown: {
         lineNumbers: true,
         extendMarkdown: md => {
