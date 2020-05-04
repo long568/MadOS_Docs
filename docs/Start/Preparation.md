@@ -4,9 +4,9 @@
 我们已为开发者准备好工具链:  
 | 平台 | 提取码 |
 | :----: | :----: |
-| [MacOSX](https://pan.baidu.com/s/1hGaZh5eAdy5QHW8a_7C22A)  | 9h4n |
-| [Ubuntu](https://pan.baidu.com/s/1MGqJNbNDAVxgjgO2pY5R7A)  | patn |
-| [Windows](https://pan.baidu.com/s/1-y_fJevZPNkNwogGl3vtWQ) | 2hyp |
+| [MacOSX](https://pan.baidu.com/s/18BthlO41wm57KK3wm7xOJw)  | pvna |
+| [Ubuntu](https://pan.baidu.com/s/1UfyspR3jYnwrls5ehgR-UA)  | f211 |
+| [Windows](https://pan.baidu.com/s/1rsnYouDiEVhgKOfE4qtvrw) | 39lv |
 ::: tip
 推荐使用 MacOSX 或 Ubuntu 平台，因为 Windows 平台的工具链运行有些慢。
 :::
@@ -17,7 +17,7 @@
 ### MacOSX / Ubuntu  
 假设解压路径为: /home/creator/mados-tools
 ``` bash
-export MADOS_TOOLS_VER=7.4.0  
+export MADOS_TOOLS_VER=7.5.0  
 export MADOS_TOOLS_HOME=/home/creator/mados-tools/tools/arm-none-eabi-$MADOS_TOOLS_VER  
 export MADOS_TOOLS_BIN=$MADOS_TOOLS_HOME/bin  
 export PATH=$MADOS_TOOLS_BIN:$PATH
@@ -42,9 +42,9 @@ source ~/.bashrc       # Ubuntu
 假设解压路径为: D:\DreamOn\MSYS2，设置用户环境变量:
 ``` bash
 # MADOS_TOOLS_VER   
-  7.4.0
+  7.5.0
 # MADOS_TOOLS_HOME  
-  D:\DreamOn\MSYS2\home\zandz\mados-tools\tools\arm-none-eabi-7.4.0
+  D:\DreamOn\MSYS2\home\zandz\mados-tools\tools\arm-none-eabi-7.5.0
 # MADOS_TOOLS_BIN  
   D:\DreamOn\MSYS2\usr\bin;  
   D:\DreamOn\MSYS2\mingw64\bin;  
@@ -99,7 +99,7 @@ arm-none-eabi-gcc -v
 ```
 输出版本信息
 ``` bash
-gcc version 7.4.0 (GNU Tools for MadOS [ARM][20190331][gcc-7.4.0][Newlib])
+gcc version 7.5.0 (GNU Tools for MadOS [ARM][20200206][gcc-7.5.0][Newlib])
 ```
 
 ### GDB
@@ -109,7 +109,7 @@ arm-none-eabi-gdb -v
 ```
 输出版本信息
 ``` bash
-GNU gdb (GDB) 8.2.1
+GNU gdb (GDB) 8.3.1
 ```
 
 ### OpenOCD
