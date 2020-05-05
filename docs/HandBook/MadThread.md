@@ -32,7 +32,7 @@ typedef void (*MadThread_t)(MadVptr)
 
 ## madThreadStkInit
 ```c
-MadStk_t* madThreadStkInit (MadVptr pStk, MadThread_t act, MadVptr exData)
+MadStk_t* madThreadStkInit(MadVptr pStk, MadThread_t act, MadVptr exData)
 ```
 新建线程时，对线程堆栈进行初始化。该函数需要根据具体的硬件进行实现。
 | 参数名 | 方向 | 说明 |
@@ -47,7 +47,7 @@ MadStk_t* madThreadStkInit (MadVptr pStk, MadThread_t act, MadVptr exData)
 
 ## madThreadCreateCarefully
 ```c
-MadTCB_t* madThreadCreateCarefully ( 
+MadTCB_t* madThreadCreateCarefully( 
     MadThread_t act, 
     MadVptr     exData, 
     MadSize_t   size, 
@@ -73,7 +73,7 @@ MadTCB_t* madThreadCreateCarefully (
 
 ## madThreadResume
 ```c
-void madThreadResume (MadU8 threadPrio)
+void madThreadResume(MadU8 threadPrio)
 ```
 恢复线程。
 | 参数名 | 方向 | 说明 |
@@ -82,7 +82,7 @@ void madThreadResume (MadU8 threadPrio)
 
 ## madThreadPend
 ```c
-void madThreadPend (MadU8 threadPrio)
+void madThreadPend(MadU8 threadPrio)
 ```
 挂起线程。
 | 参数名 | 方向 | 说明 |
@@ -91,7 +91,7 @@ void madThreadPend (MadU8 threadPrio)
 
 ## madThreadDelete
 ```c
-MadVptr madThreadDelete (MadU8 threadPrio)
+MadVptr madThreadDelete(MadU8 threadPrio)
 ```
 删除线程。
 | 参数名 | 方向 | 说明 |
@@ -100,11 +100,11 @@ MadVptr madThreadDelete (MadU8 threadPrio)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| msg | 线程msg (用户根据应用中所使用的内存分配机制进行回收) |
+| msg | 线程msg(用户根据应用中所使用的内存分配机制进行回收) |
 
 ## madThreaddDoDelete
 ```c
-MadVptr madThreadDoDelete (MadU8 threadPrio)
+MadVptr madThreadDoDelete(MadU8 threadPrio)
 ```
 删除线程。
 | 参数名 | 方向 | 说明 |
@@ -113,11 +113,11 @@ MadVptr madThreadDoDelete (MadU8 threadPrio)
 
 | 返回值 | 说明 |
 | :-:| :-|
-| msg | 线程msg (用户根据应用中所使用的内存分配机制进行回收) |
+| msg | 线程msg(用户根据应用中所使用的内存分配机制进行回收) |
 
 ## madThreadCreate(act, ed, sz, prio)
 ```c
-MadTCB_t* madThreadCreateCarefully ( 
+MadTCB_t* madThreadCreateCarefully( 
     MadThread_t act, 
     MadVptr     exData, 
     MadSize_t   size, 
@@ -133,7 +133,7 @@ MadTCB_t* madThreadCreateCarefully (
 
 ## madThreadCreateN(act, ed, sz, prio)
 ```c
-MadTCB_t* madThreadCreateCarefully ( 
+MadTCB_t* madThreadCreateCarefully( 
     MadThread_t act, 
     MadVptr     exData, 
     MadSize_t   size, 

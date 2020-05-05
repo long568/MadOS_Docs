@@ -11,7 +11,7 @@
 
 ## madMsgQCreateCarefully
 ```c
-MadMsgQCB_t* madMsgQCreateCarefully (MadU16 size, MadBool sendBlock)
+MadMsgQCB_t* madMsgQCreateCarefully(MadU16 size, MadBool sendBlock)
 ```
 新建消息队列。
 | 参数名 | 方向 | 说明 |
@@ -30,7 +30,7 @@ MadMsgQCB_t* madMsgQCreateCarefully (MadU16 size, MadBool sendBlock)
 
 ## madMsgCheck
 ```c
-MadU8 madMsgCheck (MadMsgQCB_t **pMsgQ, MadVptr *msg)
+MadU8 madMsgCheck(MadMsgQCB_t **pMsgQ, MadVptr *msg)
 ```
 检查消息队列中是否有未读消息。
 | 参数名 | 方向 | 说明 |
@@ -45,7 +45,7 @@ MadU8 madMsgCheck (MadMsgQCB_t **pMsgQ, MadVptr *msg)
 
 ## madMsgWait
 ```c
-MadU8 madMsgWait (MadMsgQCB_t **pMsgQ, MadVptr *msg, MadTim_t to)
+MadU8 madMsgWait(MadMsgQCB_t **pMsgQ, MadVptr *msg, MadTim_t to)
 ```
 等待消息。
 | 参数名 | 方向 | 说明 |
@@ -61,7 +61,7 @@ MadU8 madMsgWait (MadMsgQCB_t **pMsgQ, MadVptr *msg, MadTim_t to)
 
 ## madDoMsgSend
 ```c
-MadU8 madDoMsgSend ( 
+MadU8 madDoMsgSend( 
     MadMsgQCB_t **pMsgQ, 
     MadVptr     msg, 
     MadBool     block, 
@@ -88,9 +88,26 @@ MadU8 madDoMsgSend (
 - 不要在中断函数中尝试阻塞线程。
 :::
 
+## madDoMsgQShut
+```c
+void madDoMsgQShut(MadMsgQCB_t **pMsgQ, MadBool opt)
+```
+终止消息队列(但不释放控制块所占用的内存)。
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| pMsgQ | in | 信号量指针 |
+| opt   | in | 是否恢复等待线程 |
+
+::: tip opt
+| 值 | 说明 |
+| :-| :-|
+| MTRUE  | 以 MAD_ERR_MSGQ_INVALID 为 err 投递空消息(恢复所有等待线程) |
+| MFALSE | 忽略所有等待线程 |
+:::
+
 ## madDoMsgQDelete
 ```c
-void madDoMsgQDelete (MadMsgQCB_t **pMsgQ, MadBool opt)
+void madDoMsgQDelete(MadMsgQCB_t **pMsgQ, MadBool opt)
 ```
 删除消息队列。
 | 参数名 | 方向 | 说明 |
@@ -111,7 +128,7 @@ void madDoMsgQDelete (MadMsgQCB_t **pMsgQ, MadBool opt)
 
 ## madMsgQCreate(size)
 ```c
-MadMsgQCB_t* madMsgQCreateCarefully (MadU16 size, MadBool sendBlock)
+MadMsgQCB_t* madMsgQCreateCarefully(MadU16 size, MadBool sendBlock)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -119,7 +136,7 @@ MadMsgQCB_t* madMsgQCreateCarefully (MadU16 size, MadBool sendBlock)
 
 ## madMsgSend(pMsgQ, msg)
 ```c
-MadU8 madDoMsgSend ( 
+MadU8 madDoMsgSend( 
     MadMsgQCB_t **pMsgQ, 
     MadVptr     msg, 
     MadBool     block, 
@@ -135,7 +152,7 @@ MadU8 madDoMsgSend (
 
 ## madMsgSendBlock(pMsgQ, msg, to)
 ```c
-MadU8 madDoMsgSend ( 
+MadU8 madDoMsgSend( 
     MadMsgQCB_t **pMsgQ, 
     MadVptr     msg, 
     MadBool     block, 
@@ -148,9 +165,17 @@ MadU8 madDoMsgSend (
 | block | MTRUE |
 | err   | MAD_ERR_OK |
 
+## madMsgQShut(pMsgQ)
+```c
+void madDoMsgQShut(MadMsgQCB_t **pMsgQ, MadBool opt)
+```
+| 参数 | 值 |
+| :-| :-|
+| opt | MTRUE |
+
 ## madMsgQDelete(pMsgQ)
 ```c
-void madDoMsgQDelete (MadMsgQCB_t **pMsgQ, MadBool opt)
+void madDoMsgQDelete(MadMsgQCB_t **pMsgQ, MadBool opt)
 ```
 | 参数 | 值 |
 | :-| :-|

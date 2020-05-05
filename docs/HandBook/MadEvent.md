@@ -27,7 +27,7 @@
 
 ## madEventCreate
 ```c
-MadEventCB_t* madEventCreate (MadUint mask, MadEventMode mode, MadEventOpt opt)
+MadEventCB_t* madEventCreate(MadUint mask, MadEventMode mode, MadEventOpt opt)
 ```
 新建事件。
 | 参数名 | 方向 | 说明 |
@@ -43,7 +43,7 @@ MadEventCB_t* madEventCreate (MadUint mask, MadEventMode mode, MadEventOpt opt)
 
 ## madEventWait
 ```c
-MadU8 madEventWait (MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
+MadU8 madEventWait(MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
 ```
 等待事件。
 | 参数名 | 方向 | 说明 |
@@ -59,7 +59,7 @@ MadU8 madEventWait (MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
 
 ## madEventDoCheck
 ```c
-MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
+MadU8 madEventDoCheck(MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 ```
 检查事件当前掩码。
 | 参数名 | 方向 | 说明 |
@@ -75,7 +75,7 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 
 ## madDoEventTrigger
 ```c
-void madDoEventTrigger (MadEventCB_t **pEvent, MadUint mask, MadU8 err)
+void madDoEventTrigger(MadEventCB_t **pEvent, MadUint mask, MadU8 err)
 ```
 以mask为掩码值激活事件掩码。
 | 参数名 | 方向 | 说明 |
@@ -84,9 +84,26 @@ void madDoEventTrigger (MadEventCB_t **pEvent, MadUint mask, MadU8 err)
 | mask   | in | 激活掩码 |
 | err    | in | 激活错误代码(通常为MAD_ERR_OK) |
 
+## madDoEventShut
+```c
+void madDoEventShut(MadEventCB_t **pEvent, MadBool opt)
+```
+终止事件(但不释放控制块所占用的内存)。
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| pEvent | in | 事件指针 |
+| opt    | in | 是否恢复等待线程 |
+
+::: tip opt
+| 值 | 说明 |
+| :-| :-|
+| MTRUE  | 以 MAD_ERR_EVENT_INVALID 为 err 释放信号量(恢复所有等待线程) |
+| MFALSE | 忽略所有等待线程 |
+:::
+
 ## madDoEventDelete
 ```c
-void madDoEventDelete (MadEventCB_t **pEvent, MadBool opt)
+void madDoEventDelete(MadEventCB_t **pEvent, MadBool opt)
 ```
 删除事件。
 | 参数名 | 方向 | 说明 |
@@ -103,7 +120,7 @@ void madDoEventDelete (MadEventCB_t **pEvent, MadBool opt)
 
 ## madEventWaitNR(pEvent, to)
 ```c
-MadU8 madEventWait (MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
+MadU8 madEventWait(MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -111,7 +128,7 @@ MadU8 madEventWait (MadEventCB_t **pEvent, MadUint *mask, MadTim_t to)
 
 ## madEventCheck(pEvent, mask)
 ```c
-MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
+MadU8 madEventDoCheck(MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -119,7 +136,7 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 
 ## madEventCheckNC(pEvent, mask)
 ```c
-MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
+MadU8 madEventDoCheck(MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -127,7 +144,7 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 
 ## madEventClear(pEvent)
 ```c
-MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
+MadU8 madEventDoCheck(MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -136,15 +153,23 @@ MadU8 madEventDoCheck (MadEventCB_t **pEvent, MadUint *mask, MadBool clear)
 
 ## madEventTrigger(pEvent, mask)
 ```c
-void madDoEventTrigger (MadEventCB_t **pEvent, MadUint mask, MadU8 err)
+void madDoEventTrigger(MadEventCB_t **pEvent, MadUint mask, MadU8 err)
 ```
 | 参数 | 值 |
 | :-| :-|
 | err  | MAD_ERR_OK |
 
+## madEventShut(pEvent)
+```c
+void madDoEventShut(MadEventCB_t **pEvent, MadBool opt)
+```
+| 参数 | 值 |
+| :-| :-|
+| opt | MTRUE |
+
 ## madEventDelete(pEvent)
 ```c
-void madDoEventDelete (MadEventCB_t **pEvent, MadBool opt)
+void madDoEventDelete(MadEventCB_t **pEvent, MadBool opt)
 ```
 | 参数 | 值 |
 | :-| :-|

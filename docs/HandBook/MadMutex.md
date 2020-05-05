@@ -141,6 +141,23 @@ MadBool madMutexCheck(MadMutexCB_t **pMutex)
 | MAD_ERR_x  | 错误代码 |
 | MAD_ERR_OK | 获得资源 |
 
+## madDoMutexShut
+```c
+void madDoMutexShut(MadMutexCB_t **pMutex, MadBool opt)
+```
+终止互斥信号(但不释放控制块所占用的内存)。
+| 参数名 | 方向 | 说明 |
+| :-| :-:| :-|
+| pMutex | in | 互斥信号指针 |
+| opt    | in | 是否恢复等待线程 |
+
+::: tip opt
+| 值 | 说明 |
+| :-| :-|
+| MTRUE  | 以 MAD_ERR_MUTEX_INVALID 为 err 释放互斥信号(恢复所有等待线程) |
+| MFALSE | 忽略所有等待线程 |
+:::
+
 ## madDoMutexDelete
 ```c
 void madDoMutexDelete(MadMutexCB_t **pMutex, MadBool opt)
@@ -232,7 +249,7 @@ MadBool madDoMutexInit(MadMutexCB_t *mutex, MadU8 type, MadU8 flag)
 
 ## madMutexRelease(pMutex)
 ```c
-void madDoMutexRelease (MadMutexCB_t **pMutex, MadU8 err)
+void madDoMutexRelease(MadMutexCB_t **pMutex, MadU8 err)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -240,7 +257,7 @@ void madDoMutexRelease (MadMutexCB_t **pMutex, MadU8 err)
 
 ## madMutexDelete(pMutex)
 ```c
-void madDoMutexDelete (MadMutexCB_t **pMutex, MadBool opt)
+void madDoMutexDelete(MadMutexCB_t **pMutex, MadBool opt)
 ```
 | 参数 | 值 |
 | :-| :-|

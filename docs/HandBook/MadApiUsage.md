@@ -66,8 +66,8 @@ madEventWait
 madDoEventDelete
 madEventDelete
 
-madWaitQInit
-madWaitQShut
+madWaitQCreate
+madWaitQDelete
 ```
 ::: tip
 以上函数可能导致线程阻塞。

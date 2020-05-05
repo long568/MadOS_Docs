@@ -26,26 +26,25 @@
 一个等待队列中包含多个等待对象
 :::
 
-## madWaitQInit
+## madWaitQCreate
 ```c
-MadBool madWaitQInit(MadWaitQ_t *wq, MadU8 n)
+MadWaitQ_t* madWaitQCreate(MadU8 n)
 ```
-初始化等待队列(动态分配n个等待对象)
+新建等待队列
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
-| wq | in | 等待队列指针 |
 | n  | in | 等待队列深度 |
 
 | 返回值 | 说明 |
 | :-:| :-|
-| MFALSE | 失败 |
-| MTRUE  | 成功 |
+| MNULL | 失败 |
+| x     | 成功 |
 
-## madWaitQShut
+## madWaitQDelete
 ```c
-void madWaitQShut(MadWaitQ_t *wq)
+void madWaitQDelete(MadWaitQ_t *wq)
 ```
-关闭等待队列(动态释放所有等待对象)
+删除等待队列
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | wq | in | 等待队列指针 |

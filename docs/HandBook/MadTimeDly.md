@@ -6,7 +6,7 @@
 
 ## madInitSysTick
 ```c
-void madInitSysTick (MadTim_t freq, MadTim_t ticks)
+void madInitSysTick(MadTim_t freq, MadTim_t ticks)
 ```
 初始化 System Tick。根据硬件实现。
 | 参数名 | 方向 | 说明 |
@@ -16,7 +16,7 @@ void madInitSysTick (MadTim_t freq, MadTim_t ticks)
 
 ## madSysTick
 ```c
-MadUint madSysTick (void)
+MadUint madSysTick(void)
 ```
 每一个 System Tick 被调用一次，扫描所有线程，对延时值不为 0 的线程进行状态处理。 
 ::: tip  
@@ -25,7 +25,7 @@ MadUint madSysTick (void)
 
 ## madTimeInit
 ```c
-void madTimeInit (MadTim_t freq, MadTim_t ticks)
+void madTimeInit(MadTim_t freq, MadTim_t ticks)
 ```
 初始化时间管理模块。
 | 参数名 | 方向 | 说明 |
@@ -38,7 +38,7 @@ void madTimeInit (MadTim_t freq, MadTim_t ticks)
 
 ## madTimeDly
 ```c
-void madTimeDly (MadTim_t timeCnt)
+void madTimeDly(MadTim_t timeCnt)
 ```
 使当前线程延时一段时间。
 | 参数名 | 方向 | 说明 |

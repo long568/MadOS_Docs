@@ -6,7 +6,7 @@
 
 ## madMemInit
 ```c
-void madMemInit (MadVptr heap_head, MadSize_t heap_size)
+void madMemInit(MadVptr heap_head, MadSize_t heap_size)
 ```
 指定内存堆的可用区域。该函数由内核初始化时自动调用，使用者不可调用。
 | 参数名 | 方向 | 说明 |
@@ -16,7 +16,7 @@ void madMemInit (MadVptr heap_head, MadSize_t heap_size)
 
 ## madMemMallocCarefully
 ```c
-MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
+MadVptr madMemMallocCarefully(MadSize_t n, MadSize_t *nReal)
 ```
 分配一块动态内存。
 | 参数名 | 方向 | 说明 |
@@ -35,7 +35,7 @@ MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
 
 ## madMemCalloc
 ```c
-MadVptr madMemCalloc (MadSize_t n, MadSize_t size)
+MadVptr madMemCalloc(MadSize_t n, MadSize_t size)
 ```
 分配一块由 n 个尺寸为 size 的连续内存块组成的动态内存。
 | 参数名 | 方向 | 说明 |
@@ -50,7 +50,7 @@ MadVptr madMemCalloc (MadSize_t n, MadSize_t size)
 
 ## madMemRealloc
 ```c
-MadVptr madMemRealloc (MadVptr p, MadSize_t size)
+MadVptr madMemRealloc(MadVptr p, MadSize_t size)
 ```
 基于现有内存块 p，重新分配一块尺寸为 size 的新内存块。
 | 参数名 | 方向 | 说明 |
@@ -69,7 +69,7 @@ MadVptr madMemRealloc (MadVptr p, MadSize_t size)
 
 ## madMemFree
 ```c
-void madMemFree (MadVptr p)
+void madMemFree(MadVptr p)
 ```
 回收 p 指向的内存块。
 | 参数名 | 方向 | 说明 |
@@ -78,7 +78,7 @@ void madMemFree (MadVptr p)
 
 ## madMemUnusedSize
 ```c
-MadSize_t madMemUnusedSize (void)
+MadSize_t madMemUnusedSize(void)
 ```
 获取可用内存总数。
 | 返回值 | 说明 |
@@ -87,7 +87,7 @@ MadSize_t madMemUnusedSize (void)
 
 ## madMemMaxSize
 ```c
-MadSize_t madMemMaxSize (void)
+MadSize_t madMemMaxSize(void)
 ```
 获取最大内存堆尺寸。
 | 返回值 | 说明 |
@@ -96,7 +96,7 @@ MadSize_t madMemMaxSize (void)
 
 ## madMemCpy
 ```c
-void madMemCpy (MadVptr dst, const MadVptr src, MadSize_t len)
+void madMemCpy(MadVptr dst, const MadVptr src, MadSize_t len)
 ```
 数据复制。
 | 参数名 | 方向 | 说明 |
@@ -107,7 +107,7 @@ void madMemCpy (MadVptr dst, const MadVptr src, MadSize_t len)
 
 ## madMemSet
 ```c
-void madMemSet (MadVptr dst, MadU8 value, MadSize_t len)
+void madMemSet(MadVptr dst, MadU8 value, MadSize_t len)
 ```
 数据设置。
 | 参数名 | 方向 | 说明 |
@@ -118,7 +118,7 @@ void madMemSet (MadVptr dst, MadU8 value, MadSize_t len)
 
 ## madMemCmp
 ```c
-void madMemCmp (MadVptr dst, const MadVptr src, MadSize_t len)
+void madMemCmp(MadVptr dst, const MadVptr src, MadSize_t len)
 ```
 数据比较。
 | 参数名 | 方向 | 说明 |
@@ -135,7 +135,7 @@ void madMemCmp (MadVptr dst, const MadVptr src, MadSize_t len)
 
 ## madMemMalloc(n)
 ```c
-MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
+MadVptr madMemMallocCarefully(MadSize_t n, MadSize_t *nReal)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -143,6 +143,6 @@ MadVptr madMemMallocCarefully (MadSize_t n, MadSize_t *nReal)
 
 ## madMemFreeNull(p)
 ```c
-void madMemFree (MadVptr p);
+void madMemFree(MadVptr p);
 ```
 内存释放后将p置0。

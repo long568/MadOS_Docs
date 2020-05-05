@@ -33,7 +33,7 @@
 
 ## madOSInit
 ```c
-void madOSInit (MadVptr heap_head, MadSize_t heap_size)
+void madOSInit(MadVptr heap_head, MadSize_t heap_size)
 ```
 负责初始化系统内部参数以及创建空闲线程。
 | 参数名 | 方向 | 说明 |
@@ -43,19 +43,19 @@ void madOSInit (MadVptr heap_head, MadSize_t heap_size)
 
 ## madOSRun
 ```c
-void madOSRun (void)
+void madOSRun(void)
 ```
 负责启动系统，部分代码需针对具体硬件实现。
 
 ## madInitStatist
 ```c
-void madInitStatist (void)
+void madInitStatist(void)
 ```
 以 1s 作为间隔，统计系统运行时相关信息。
 
 ## madIdelRate
 ```c
-MadInt madIdelRate (void)
+MadInt madIdelRate(void)
 ```
 返回系统当前的空闲率
 | 返回值 | 说明 |

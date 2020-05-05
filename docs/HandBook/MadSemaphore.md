@@ -11,7 +11,7 @@
 
 ## madSemCreateCarefully
 ```c
-MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
+MadSemCB_t* madSemCreateCarefully(MadU16 cnt, MadU16 max)
 ```
 新建信号量。
 | 参数名 | 方向 | 说明 |
@@ -26,7 +26,7 @@ MadSemCB_t* madSemCreateCarefully (MadU16 cnt, MadU16 max)
 
 ## madSemInitCarefully
 ```c
-MadBool madSemInitCarefully (MadSemCB_t *sem, MadU16 cnt, MadU16 max)
+MadBool madSemInitCarefully(MadSemCB_t *sem, MadU16 cnt, MadU16 max)
 ```
 初始化信号量。
 | 参数名 | 方向 | 说明 |
@@ -41,7 +41,7 @@ MadBool madSemInitCarefully (MadSemCB_t *sem, MadU16 cnt, MadU16 max)
 
 ## madDoSemRelease
 ```c
-void madDoSemRelease (MadSemCB_t **pSem, MadU8 err)
+void madDoSemRelease(MadSemCB_t **pSem, MadU8 err)
 ```
 释放一次信号量。
 | 参数名 | 方向 | 说明 |
@@ -51,7 +51,7 @@ void madDoSemRelease (MadSemCB_t **pSem, MadU8 err)
 
 ## madSemWait
 ```c
-MadU8 madSemWait (MadSemCB_t **pSem, MadTim_t timOut)
+MadU8 madSemWait(MadSemCB_t **pSem, MadTim_t timOut)
 ```
 等待信号量。
 | 参数名 | 方向 | 说明 |
@@ -66,7 +66,7 @@ MadU8 madSemWait (MadSemCB_t **pSem, MadTim_t timOut)
 
 ## madSemWaitInCritical
 ```c
-MadU8 madSemWaitInCritical (MadSemCB_t **pSem, MadTim_t timOut)
+MadU8 madSemWaitInCritical(MadSemCB_t **pSem, MadTim_t timOut)
 ```
 等待信号量(谨慎使用)。
 | 参数名 | 方向 | 说明 |
@@ -87,7 +87,7 @@ MadU8 madSemWaitInCritical (MadSemCB_t **pSem, MadTim_t timOut)
 
 ## madSemCheck
 ```c
-MadBool madSemCheck (MadSemCB_t **pSem)
+MadBool madSemCheck(MadSemCB_t **pSem)
 ```
 检查信号量是否可用。
 | 参数名 | 方向 | 说明 |
@@ -101,21 +101,13 @@ MadBool madSemCheck (MadSemCB_t **pSem)
 
 ## madDoSemShut
 ```c
-MadSemCB_t* madDoSemShut(MadSemCB_t **pSem, MadBool opt)
+void madDoSemShut(MadSemCB_t **pSem, MadBool opt)
 ```
-终结信号量
-:::tip
-**madDoSemShut**不释放信号量所占用的内存空间，而是将其返回给调用者。
-:::
+终止信号量(但不释放控制块所占用的内存)。
 | 参数名 | 方向 | 说明 |
 | :-| :-:| :-|
 | pSem | in | 信号量指针 |
 | opt  | in | 是否恢复等待线程 |
-
-| 返回值 | 说明 |
-| :-:| :-|
-| 0 | 无此信号量 |
-| x | 终结信号量 |
 
 ::: tip opt
 | 值 | 说明 |
@@ -126,7 +118,7 @@ MadSemCB_t* madDoSemShut(MadSemCB_t **pSem, MadBool opt)
 
 ## madDoSemDelete
 ```c
-void madDoSemDelete (MadSemCB_t **pSem, MadBool opt)
+void madDoSemDelete(MadSemCB_t **pSem, MadBool opt)
 ```
 删除信号量。
 | 参数名 | 方向 | 说明 |
@@ -191,7 +183,7 @@ MadBool madSemInitCarefully(MadSemCB_t *sem, MadU16 cnt, MadU16 max)
 
 ## madSemRelease(pSem)
 ```c
-void madDoSemRelease (MadSemCB_t **pSem, MadU8 err)
+void madDoSemRelease(MadSemCB_t **pSem, MadU8 err)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -199,7 +191,7 @@ void madDoSemRelease (MadSemCB_t **pSem, MadU8 err)
 
 ## madSemShut(pSem)
 ```c
-void madDoSemShut (MadSemCB_t **pSem, MadBool opt)
+void madDoSemShut(MadSemCB_t **pSem, MadBool opt)
 ```
 | 参数 | 值 |
 | :-| :-|
@@ -207,7 +199,7 @@ void madDoSemShut (MadSemCB_t **pSem, MadBool opt)
 
 ## madSemDelete(pSem)
 ```c
-void madDoSemDelete (MadSemCB_t **pSem, MadBool opt)
+void madDoSemDelete(MadSemCB_t **pSem, MadBool opt)
 ```
 | 参数 | 值 |
 | :-| :-|

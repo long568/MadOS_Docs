@@ -6,7 +6,7 @@
 
 ## madFBufferCreate
 ```c
-MadFBuffer_t* madFBufferCreate (MadSize_t n, MadSize_t size)
+MadFBuffer_t* madFBufferCreate(MadSize_t n, MadSize_t size)
 ```
 新建快速缓存。
 | 参数名 | 方向 | 说明 |
@@ -21,7 +21,7 @@ MadFBuffer_t* madFBufferCreate (MadSize_t n, MadSize_t size)
 
 ## madFBufferGet
 ```c
-MadVptr madFBufferGet (MadFBuffer_t *fb)
+MadVptr madFBufferGet(MadFBuffer_t *fb)
 ```
 从快速缓存中取得一个分块。
 | 参数名 | 方向 | 说明 |
@@ -35,7 +35,7 @@ MadVptr madFBufferGet (MadFBuffer_t *fb)
 
 ## madFBufferPut
 ```c
-MadVptr madFBufferPut (MadFBuffer_t *fb, MadVptr buf)
+MadVptr madFBufferPut(MadFBuffer_t *fb, MadVptr buf)
 ```
 将一个分块放回快速缓存中。
 | 参数名 | 方向 | 说明 |
