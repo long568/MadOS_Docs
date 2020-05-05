@@ -255,6 +255,14 @@ void madDoMutexRelease(MadMutexCB_t **pMutex, MadU8 err)
 | :-| :-|
 | err | MAD_ERR_OK |
 
+## madMutexShut(pMutex)
+```c
+void madDoMutexShut(MadMutexCB_t **pMutex, MadBool opt)
+```
+| 参数 | 值 |
+| :-| :-|
+| opt | MTRUE |
+
 ## madMutexDelete(pMutex)
 ```c
 void madDoMutexDelete(MadMutexCB_t **pMutex, MadBool opt)
