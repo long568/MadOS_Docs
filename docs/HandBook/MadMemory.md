@@ -30,7 +30,7 @@ MadVptr madMemMallocCarefully(MadSize_t n, MadSize_t *nReal)
 | NZ | 成功(内存块首地址) |
 
 ::: tip
-**malloc(0)** 返回0
+- 若空间足够，**malloc(0)** 会返回一个有效指针。
 :::
 
 ## madMemCalloc
@@ -64,8 +64,8 @@ MadVptr madMemRealloc(MadVptr p, MadSize_t size)
 | NZ | 成功(内存块首地址) |
 
 ::: tip
-- **realloc** 调用失败时并不会释放**p**所指向的内存  
-- 若 **size** 为0，**realloc** 会释放**p**所指向的内存，并返回**p**(而不是**NULL**)。
+- **realloc** 调用失败时并不会释放**p**  
+- 若 **size** 为0，**realloc** 会释放**p**，并返回**NULL**。
 :::
 
 ## madMemFree
