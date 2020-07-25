@@ -5,10 +5,12 @@
 | 平台 | 提取码 |
 | :----: | :----: |
 | [MacOSX](https://pan.baidu.com/s/18BthlO41wm57KK3wm7xOJw)  | pvna |
-| [Ubuntu](https://pan.baidu.com/s/1UfyspR3jYnwrls5ehgR-UA)  | f211 |
 | [Windows](https://pan.baidu.com/s/1rsnYouDiEVhgKOfE4qtvrw) | 39lv |
+| [Ubuntu](https://pan.baidu.com/s/1UfyspR3jYnwrls5ehgR-UA)  | f211 |
+| [Raspberry Pi](https://pan.baidu.com/s/17_VfkWYO_7AWbMxWoCFOaw) | 7kc4 |
 ::: tip
-推荐使用 MacOSX 或 Ubuntu 平台，因为 Windows 平台的工具链运行有些慢。
+- 推荐使用 MacOSX 或 Ubuntu 平台，因为 Windows 平台的工具链运行有些慢。
+- 在安装64位Ubuntu的 **Raspberry Pi(3B/3B+/4B)** 上亦可开发MadOS应用。
 :::
 
 ## 配置工具链
@@ -78,6 +80,17 @@ sudo apt-get install openocd
 - Windows平台可能需以管理员身份运行VSCode，以使其可调用工具链。
 :::
 
+### 安装 Raspberry Pi 版 VSCode
+``` bash
+#切换至超管用户
+sudo -s
+#执行自动安装脚本
+. <( wget -O - https://code.headmelted.com/installers/apt.sh )
+```
+::: tip
+- [自动安装](http://code.headmelted.com/#platforms)过程可能会出现错误提示，若最终提示安装成功，则忽略错误。
+:::
+
 ### 安装 VSCode 扩展
 | 扩展名 | 扩展标识符 | 发布者名称 |
 | :----: | :----: | :----: |
@@ -87,7 +100,8 @@ sudo apt-get install openocd
 | ARM          | dan-c-underwood.arm     | dan-c-underwood |
 | Cortex-Debug | marus25.cortex-debug    | marus25         |
 ::: tip
-MadOS支持Lua脚本语言，详见后续章节。
+- Microsoft提供的C/C++插件尚支持 **arm64** 架构，固无法在 **Raspberry Pi** 上使用。
+- MadOS支持Lua，详见后续章节。
 :::
 
 ## 验证
