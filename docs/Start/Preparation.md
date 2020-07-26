@@ -100,7 +100,7 @@ sudo -s
 | ARM          | dan-c-underwood.arm     | dan-c-underwood |
 | Cortex-Debug | marus25.cortex-debug    | marus25         |
 ::: tip
-- Microsoft提供的C/C++插件尚支持 **arm64** 架构，固无法在 **Raspberry Pi** 上使用。
+- Microsoft提供的C/C++插件尚不支持 **arm64** 架构，固无法在 **Raspberry Pi** 上使用。
 - MadOS支持Lua，详见后续章节。
 :::
 
