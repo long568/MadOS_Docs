@@ -8,7 +8,10 @@ npm run build
 cd docs/.vuepress/dist
 
 # 发布到 mados.net
-scp -r * root@mados.net:/root/mados/doc/
+# scp -r * root@mados.net:/root/mados/doc/
+
+# 发布到 本地服务器
+scp -r * lo@183.129.178.195:/home/lo/mados/doc/
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
