@@ -35,7 +35,7 @@ source ~/.bashrc   # Ubuntu
 
 ## 安装代码编辑器
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
-:::tip
+::: tip
 - [下载缓慢看这里](https://zhuanlan.zhihu.com/p/112215618)
 - 设置环境变量后，需重启VSCode，以使其加载新环境变量。
 :::
