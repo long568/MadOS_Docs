@@ -51,14 +51,16 @@ source ~/.bashrc   # Ubuntu
 wsl --update
 wsl --set-default-version 2
 ```
+![WSL2_Install&Configure](./images/Preparation/WSL2_Install&Configure.png)
 
 #### 导入开发环境
 - 新建文件夹，用作存放导入的开发环境。  
-如: D:\wsl-ubuntu-20.04
+如: D:\Games\wsl-ubuntu-20.04
 - 导入
 ``` powershell
-wsl --import Ubuntu-20.04 D:\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
+wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
 ```
+![WSL2_Import](./images/Preparation/WSL2_Import.png)
 
 #### usbipd-win 安装
 [下载地址](https://github.com/dorssel/usbipd-win/releases)
@@ -75,15 +77,49 @@ wsl --import Ubuntu-20.04 D:\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
 :::
 
 ### 安装 VSCode 扩展
-| 扩展名 | 发布者名称 |
-| :----: | :----: |
-| AutoLaunch   | philfontaine    |
-| C/C++        | Microsoft       |
-| Lua          | sumneko         |
-| Arm Assembly | dan-c-underwood |
-| Cortex-Debug | marus25         |
+| 扩展名 | 发布者名称 | *Windows |
+| :----: | :----: | :----: |
+| AutoLaunch   | philfontaine    | Ubuntu  |
+| C/C++        | Microsoft       | Ubuntu  |
+| Lua          | sumneko         | Ubuntu  |
+| Arm Assembly | dan-c-underwood | Ubuntu  |
+| Cortex-Debug | marus25         | Ubuntu  |
+| Remote - WSL | Microsoft       | Windows |
 ::: tip
+- Windows平台下，插件安装需要区分主/子系统，详见下文。
 - MadOS支持Lua，详见后续章节。
+:::
+
+### Windows 环境配置
+**WSL2 + Ubuntu** 提供了一个运行在 **Windows** 内部的子系统(即，**Ubuntu**)，**编译**与**调试**都在 **Ubuntu** 中完成。
+默认情况下，**VSCode** 与 **调试器** 都是与 **Windows** 相关联，而非 **Ubuntu** ，因此，需要做一些额外设置，改变关联。
+::: tip
+相比 **MinGW** / **CygWin**，**WSL2** 提供非"转译"的 **Linux** 内核，即，运行效率更高。
+:::
+
+#### 首次启动 Ubuntu & VSCode
+``` powershell
+wsl
+code .
+```
+![WSL2_First](./images/Preparation/WSL2_First.png)
+![WSL2_FirstVSCode](./images/Preparation/WSL2_FirstVSCode.png)
+![WSL2_FirstVSCodePlugs](./images/Preparation/WSL2_FirstVSCodePlugs.png)
+
+#### 再次启动 Ubuntu & VSCode
+- 打开 **VSCode** & 连接至 **Ubuntu**
+![WSL2_ReopenVSCode](./images/Preparation/WSL2_ReopenVSCode.png)
+![WSL2_ReconnectVSCode](./images/Preparation/WSL2_ReconnectVSCode.png)
+
+#### 将调试器关联至 Ubuntu
+``` powershell
+usbipd wsl list
+usbipd wsl attach --busid <busid>
+```
+![WSL2_USB_Windows](./images/Preparation/WSL2_USB_Windows.png)
+![WSL2_USB_Ubuntu](./images/Preparation/WSL2_USB_Ubuntu.png)
+::: tip
+每次 **重接调试器** 或 **重启 Ubuntu** 都需手动将调试器关联至 **Ubuntu**
 :::
 
 ## 验证
