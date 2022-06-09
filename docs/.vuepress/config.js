@@ -33,5 +33,6 @@ module.exports = {
             { text: 'Github', link: 'https://github.com/long568/MadOS' }
         ],
         sidebar: 'auto'
-    }
+    },
+    plugins: ['@vuepress/medium-zoom']
 }

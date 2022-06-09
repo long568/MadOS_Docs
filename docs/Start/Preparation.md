@@ -4,8 +4,8 @@
 我们已为开发者准备好工具链:  
 | 平台 | 提取码 |
 | :----: | :----: |
-| [MacOSX](https://pan.baidu.com/s/12RdYZJD5p37PpwuKFaGSgA) | dijo |
-| [Ubuntu](敬请期待) | - |
+| [MacOSX](https://pan.baidu.com/s/12RdYZJD5p37PpwuKFaGSgA)  | dijo |
+| [Windows](https://pan.baidu.com/s/1McsnJkOcz_DGlXZUXg4iwQ) | adng |
 
 ## 配置工具链
 首先，将工具链解压到磁盘上，然后，设置几个环境变量:
@@ -32,6 +32,40 @@ source ~/.zprofile # MacOSX
 ``` bash
 source ~/.bashrc   # Ubuntu
 ```
+
+### Windows
+我们提供基于 WSL2 + Ubuntu 的整体开发环境，以减少开发者踩坑周期。
+
+#### 在Windows中开启 WSL2 支持
+- "硬件虚拟化":  
+根据主板手册在 BIOS 中设置
+- "程序与功能":  
+![Program&Function](./images/Preparation/Program&Function.png)
+- "启用或关闭 Windows 功能":  
+![WindowsFunction](./images/Preparation/WindowsFunction.png)
+- "适用于 Windows 的 Linux 子系统 & 虚拟机平台"
+![WSL&VM](./images/Preparation/WSL&VM.png)
+
+#### WSL2 更新&设置
+``` powershell
+wsl --update
+wsl --set-default-version 2
+```
+
+#### 导入开发环境
+- 新建文件夹，用作存放导入的开发环境。  
+如: D:\wsl-ubuntu-20.04
+- 导入
+``` powershell
+wsl --import Ubuntu-20.04 D:\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
+```
+
+#### usbipd-win 安装
+[下载地址](https://github.com/dorssel/usbipd-win/releases)
+
+#### (可选)高级用户
+[独立工具链](https://pan.baidu.com/s/1O06wnQdNvJqfEwctte6UHQ)  
+提取码: 9qbx
 
 ## 安装代码编辑器
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
