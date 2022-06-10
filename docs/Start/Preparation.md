@@ -8,9 +8,9 @@
 | [Windows](https://pan.baidu.com/s/1McsnJkOcz_DGlXZUXg4iwQ) | adng |
 
 ## 配置工具链
-首先，将工具链解压到磁盘上，然后，设置几个环境变量:
 
-### MacOSX / Ubuntu  
+### MacOSX / Ubuntu
+首先，将工具链解压，然后，设置几个环境变量:  
 假设解压路径为: /home/creator
 ``` bash
 export MADOS_TOOLS_VER=12.1.0
@@ -73,7 +73,7 @@ wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
 ::: tip
 - [下载缓慢看这里](https://zhuanlan.zhihu.com/p/112215618)
-- 设置环境变量后，需重启VSCode，以使其加载新环境变量。
+- 设置环境变量后，需重启 **VSCode**，以使其加载新环境变量。
 :::
 
 ### 安装 VSCode 扩展
@@ -86,11 +86,11 @@ wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
 | Cortex-Debug | marus25         | Ubuntu  |
 | Remote - WSL | Microsoft       | Windows |
 ::: tip
-- Windows平台下，插件安装需要区分主/子系统，详见下文。
-- MadOS支持Lua，详见后续章节。
+- **Windows** 平台下，插件安装需要区分主/子系统，详见下文。
+- **MadOS** 支持 **Lua**，详见后续章节。
 :::
 
-### Windows 环境配置
+### Windows
 **WSL2 + Ubuntu** 提供了一个运行在 **Windows** 内部的子系统(即，**Ubuntu**)，**编译**与**调试**都在 **Ubuntu** 中完成。
 默认情况下，**VSCode** 与 **调试器** 都是与 **Windows** 相关联，而非 **Ubuntu** ，因此，需要做一些额外设置，改变关联。
 ::: tip
@@ -119,7 +119,7 @@ usbipd wsl attach --busid <busid>
 ![WSL2_USB_Windows](./images/Preparation/WSL2_USB_Windows.png)
 ![WSL2_USB_Ubuntu](./images/Preparation/WSL2_USB_Ubuntu.png)
 ::: tip
-每次 **重接调试器** 或 **重启 Ubuntu** 都需手动将调试器关联至 **Ubuntu**
+每次 **重接调试器** 或 **重启 Ubuntu** 都需手动将 **调试器** 关联至 **Ubuntu**
 :::
 
 ## 验证

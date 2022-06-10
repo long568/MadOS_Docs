@@ -6,9 +6,44 @@
 初学者请选择master分支， 产品应用可选择经过严格验证的release版本。
 :::
 
+### Windows
+**WSL2 + Ubuntu** 提供的是一个虚拟机环境。将源码放置在 **Ubuntu** 中，相比放在 **Windows** 中，编译速度会大幅提升。
+- 启动 **Ubuntu**
+![WSL2_StartUbuntu](./images/FirstCode/WSL2_StartUbuntu.png)
+- 找到 **Ubuntu** 根路径  
+编辑路径栏，直接输入：
+```powershell
+\\wsl$\Ubuntu-20.04
+```
+![WSL2_UbuntuRoot](./images/FirstCode/WSL2_UbuntuRoot.png)
+- 建议的源码存放路径
+```powershell
+\\wsl$\Ubuntu-20.04\home\lo\
+```
+::: tip
+- 上述路径可以在 **Github for Windows** 中正常使用。
+- 如有安全提示，一律选择"**信任**"。
+- **Windows** 与 **MacOS**/**Ubuntu** 采用的换行符不一致，**Git Clone** 源码之前需修改设置：
+![Git_CfgPath](./images/FirstCode/Git_CfgPath.png)
+![Git_CfgAdd](./images/FirstCode/Git_CfgAdd.png)
+:::
+- 获取源码
+![WSL2_CloneCode](./images/FirstCode/WSL2_CloneCode.png)
+- 查看状态
+![WSL2_GitHubRdy](./images/FirstCode/WSL2_GitHubRdy.png)
+- 确认位置
+![WSL2_CodeRdy](./images/FirstCode/WSL2_CodeRdy.png)
+
 ## 展开源码
+
+### MacOS & Ubuntu
 将 **MadOS** 文件夹拖入 **VSCode** 中:
 ![First Code](./images/FirstCode/FirstCode.png)
+
+### Windows
+将 **VSCode** 连接至 **Ubuntu**，再通过**文件**->**打开文件夹**找到 **MadOS**
+![WSL2_FindMadOS](./images/FirstCode/WSL2_FindMadOS.png)
+![WSL2_VSCodeRdy](./images/FirstCode/WSL2_VSCodeRdy.png)
 
 ### 目录结构
 ``` bash
