@@ -11,10 +11,10 @@
 
 ### MacOSX / Ubuntu
 首先，将工具链解压，然后，设置几个环境变量:  
-假设解压路径为: /home/creator
+假设解压路径为: /home/lo
 ``` bash
 export MADOS_TOOLS_VER=12.1.0
-export MADOS_TOOLS_HOME=/home/creator/mados-tools/tools
+export MADOS_TOOLS_HOME=/home/lo/mados-tools/tools
 export MADOS_TOOLS_GCC=$MADOS_TOOLS_HOME/arm-none-eabi-$MADOS_TOOLS_VER
 export MADOS_TOOLS_OPENOCD=$MADOS_TOOLS_HOME/openocd
 export MADOS_TOOLS_BIN=$MADOS_TOOLS_GCC/bin:$MADOS_TOOLS_OPENOCD/bin
