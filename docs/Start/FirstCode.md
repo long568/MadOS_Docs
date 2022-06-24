@@ -89,7 +89,7 @@ MadOS
 # export MADOS_WORKING_APP=LoNode
 export MADOS_WORKING_APP=lesson001
 ```
-将 **lesson001** 前的注释去掉，并注释余项目，然后在 **VSCode** 中运行 **config** 任务：
+将 **lesson001** 前的注释去掉，并注释其他项目，然后在 **VSCode** 中运行 **config** 任务：
 ::: tip
 终端 -> 运行任务 -> config
 ``` bash
