@@ -102,7 +102,7 @@ MadVptr madThreadDelete(MadU8 threadPrio)
 | :-:| :-|
 | msg | 线程msg(用户根据应用中所使用的内存分配机制进行回收) |
 
-## madThreaddDoDelete
+## madThreadDoDelete
 ```c
 MadVptr madThreadDoDelete(MadU8 threadPrio)
 ```
