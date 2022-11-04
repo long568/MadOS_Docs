@@ -4,8 +4,8 @@
 我们已为开发者准备好工具链:  
 | 平台 | 提取码 |
 | :----: | :----: |
-| [MacOSX](https://pan.baidu.com/s/12RdYZJD5p37PpwuKFaGSgA)  | dijo |
-| [Windows](https://pan.baidu.com/s/1McsnJkOcz_DGlXZUXg4iwQ) | adng |
+| [MacOSX](https://pan.baidu.com/s/1DpRmPaYTWthTg9AusHGZlA?pwd=jm5m)  | jm5m |
+| [Windows](https://pan.baidu.com/s/14Pqbtd3DH4XpbqxoXvuXXg?pwd=p3gc) | p3gc |
 
 ## 配置工具链
 
@@ -13,7 +13,7 @@
 首先，将工具链解压，然后，设置几个环境变量:  
 假设解压路径为: /home/lo
 ``` bash
-export MADOS_TOOLS_VER=12.1.0
+export MADOS_TOOLS_VER=12.2.0
 export MADOS_TOOLS_HOME=/home/lo/mados-tools/tools
 export MADOS_TOOLS_GCC=$MADOS_TOOLS_HOME/arm-none-eabi-$MADOS_TOOLS_VER
 export MADOS_TOOLS_OPENOCD=$MADOS_TOOLS_HOME/openocd
@@ -66,8 +66,8 @@ wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
 [下载地址](https://github.com/dorssel/usbipd-win/releases)
 
 #### (可选)高级用户
-[独立工具链](https://pan.baidu.com/s/1O06wnQdNvJqfEwctte6UHQ)  
-提取码: 9qbx
+[独立工具链](https://pan.baidu.com/s/12H3sdpX6tJUUpJgh16QHhw?pwd=h5d8)  
+提取码: h5d8
 
 ## 安装代码编辑器
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
@@ -131,7 +131,7 @@ arm-none-eabi-gcc -v
 ```
 输出版本信息
 ``` bash
-gcc version 12.1.0 (GNU Tools for MadOS [ARM][20220526][gcc-12.1.0][Newlib])
+gcc version 12.2.0 (GNU Tools for MadOS [ARM][20220922][gcc-12.2.0][Newlib])
 ```
 
 ### GDB
@@ -141,7 +141,7 @@ arm-none-eabi-gdb -v
 ```
 输出版本信息
 ``` bash
-GNU gdb (GNU Tools for MadOS [ARM][20220526][gdb-12.1]) 12.1
+GNU gdb (GNU Tools for MadOS [ARM][20220922][gdb-12.1]) 12.1
 ```
 
 ### OpenOCD
@@ -151,5 +151,5 @@ openocd -v
 ```
 输出版本信息
 ``` bash
-xPack OpenOCD arm64 Open On-Chip Debugger 0.11.0+dev (2022-03-25-19:31)
+xPack OpenOCD arm64 Open On-Chip Debugger 0.11.0+dev (2022-09-01-20:57)
 ```
