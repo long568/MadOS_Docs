@@ -58,7 +58,7 @@ wsl --set-default-version 2
 如: D:\Games\wsl-ubuntu-20.04
 - 导入
 ``` powershell
-wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.1.0-WSL2.tar
+wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.2.0-WSL2.tar
 ```
 ![WSL2_Import](./images/Preparation/WSL2_Import.png)
 
