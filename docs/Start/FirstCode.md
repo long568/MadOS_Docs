@@ -11,14 +11,10 @@
 - 启动 **Ubuntu**
 ![WSL2_StartUbuntu](./images/FirstCode/WSL2_StartUbuntu.png)
 - 找到 **Ubuntu** 根路径  
-编辑路径栏，直接输入：
-```powershell
-\\wsl$\Ubuntu-22.04
-```
 ![WSL2_UbuntuRoot](./images/FirstCode/WSL2_UbuntuRoot.png)
 - 建议的源码存放路径
 ```powershell
-\\wsl$\Ubuntu-22.04\home\lo\
+\\wsl.localhost\Ubuntu-22.04\home\lo
 ```
 ::: tip
 - 上述路径可以在 **Github for Windows** 中正常使用。
@@ -31,8 +27,6 @@
 ![WSL2_CloneCode](./images/FirstCode/WSL2_CloneCode.png)
 - 查看状态
 ![WSL2_GitHubRdy](./images/FirstCode/WSL2_GitHubRdy.png)
-- 确认位置
-![WSL2_CodeRdy](./images/FirstCode/WSL2_CodeRdy.png)
 
 ## 展开源码
 
@@ -78,8 +72,10 @@ MadOS
 - 如果您是操作系统爱好者，也许对 **arch、kernel、device、driver** 中的内容会感兴趣。  
 - 如果您是初学者、开发者，则只需关心 **app** ，即您的项目源码，以便快速实现想法。  
 - MadOS尚未包含某些驱动或第三方库，如有需要，您可:
-    - 联系 [我们](/Story/) 进行添加
-    - 访问 [社区](https://github.com/long568/MadOS/issues) 搜索一下
+    - 求助 [FAQ](/FAQ/)
+    - 访问 [社区](https://github.com/long568/MadOS/issues)
+    - 联系 我们  
+    ![MadOS_WeChat](./images/FirstCode/MadOS_WeChat.jpg)
 :::
 
 ## 切换项目

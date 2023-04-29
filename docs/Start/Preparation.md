@@ -148,12 +148,6 @@ GNU gdb (GNU Tools for MadOS [ARM][20230428][gdb-13.1]) 13.1
 ```
 
 ### OpenOCD
-::: tip
-MacOSX平台需要赋予依赖动态库权限:
-``` bash
-sudo xattr -r -d com.apple.quarantine $MADOS_TOOLS_HOME/openocd/libexec
-```
-:::
 执行
 ``` bash
 openocd -v
@@ -162,3 +156,9 @@ openocd -v
 ``` bash
 xPack Open On-Chip Debugger 0.12.0-01004-g9ea7f3d64-dirty (2023-01-30-17:03)
 ```
+::: tip
+MacOSX平台需要赋予依赖动态库权限:
+``` bash
+sudo xattr -r -d com.apple.quarantine $MADOS_TOOLS_HOME/openocd/libexec
+```
+:::
