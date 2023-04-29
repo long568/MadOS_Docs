@@ -11,8 +11,9 @@ cd docs/.vuepress/dist
 # scp -r * root@mados.net:/root/mados/doc/
 
 # 发布到 本地服务器
-# scp -r -P 56808 * lo@221.6.34.82:/cache/wwwroot/mados-doc/
-scp -r * lo@192.168.1.8:/cache/wwwroot/mados-doc/
+# scp -r * lo@192.168.1.8:/cache/wwwroot/mados-doc/
+scp -r -P 56808 * lo@221.6.34.82:/cache/wwwroot/mados-doc/
+
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
