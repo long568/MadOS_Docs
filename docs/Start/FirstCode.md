@@ -13,12 +13,12 @@
 - 找到 **Ubuntu** 根路径  
 编辑路径栏，直接输入：
 ```powershell
-\\wsl$\Ubuntu-20.04
+\\wsl$\Ubuntu-22.04
 ```
 ![WSL2_UbuntuRoot](./images/FirstCode/WSL2_UbuntuRoot.png)
 - 建议的源码存放路径
 ```powershell
-\\wsl$\Ubuntu-20.04\home\lo\
+\\wsl$\Ubuntu-22.04\home\lo\
 ```
 ::: tip
 - 上述路径可以在 **Github for Windows** 中正常使用。

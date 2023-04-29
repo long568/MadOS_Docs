@@ -2,10 +2,10 @@
 
 ## 获取工具链
 我们已为开发者准备好工具链:  
-| 平台 | 提取码 |
-| :----: | :----: |
-| [MacOSX](https://pan.baidu.com/s/1DpRmPaYTWthTg9AusHGZlA?pwd=jm5m)  | jm5m |
-| [Windows](https://pan.baidu.com/s/14Pqbtd3DH4XpbqxoXvuXXg?pwd=p3gc) | p3gc |
+| <!-- --> | <!-- --> | <!-- --> |
+| :----: | :----: | :----: |
+| 13.1.0 |  [MacOS (ARM64)](https://pan.baidu.com/s/14rjfLGgwCG8a6lIYkL524A?pwd=nk86) | [Windows (x64)](https://pan.baidu.com/s/1IEJhNeINeD2a_XFrR5jmCw?pwd=gs2i) |
+| 12.2.0  | [MacOS (ARM64)](https://pan.baidu.com/s/1DpRmPaYTWthTg9AusHGZlA?pwd=jm5m) | [Windows (x64)](https://pan.baidu.com/s/14Pqbtd3DH4XpbqxoXvuXXg?pwd=p3gc) |
 
 ## 配置工具链
 
@@ -13,7 +13,7 @@
 首先，将工具链解压，然后，设置几个环境变量:  
 假设解压路径为: /home/lo
 ``` bash
-export MADOS_TOOLS_VER=12.2.0
+export MADOS_TOOLS_VER=13.1.0
 export MADOS_TOOLS_HOME=/home/lo/mados-tools/tools
 export MADOS_TOOLS_GCC=$MADOS_TOOLS_HOME/arm-none-eabi-$MADOS_TOOLS_VER
 export MADOS_TOOLS_OPENOCD=$MADOS_TOOLS_HOME/openocd
@@ -34,7 +34,7 @@ source ~/.bashrc   # Ubuntu
 ```
 
 ### Windows
-我们提供基于 WSL2 + Ubuntu 的整体开发环境，以减少开发者踩坑周期。
+我们提供基于 WSL2 + Ubuntu 的集成开发环境 (**SDK**)，以减少开发者踩坑周期。
 
 #### 在Windows中开启 WSL2 支持
 - "硬件虚拟化":  
@@ -55,10 +55,10 @@ wsl --set-default-version 2
 
 #### 导入开发环境
 - 新建文件夹，用作存放导入的开发环境。  
-如: D:\Games\wsl-ubuntu-20.04
+如: D:\Games\wsl-ubuntu-22.04
 - 导入
 ``` powershell
-wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.2.0-WSL2.tar
+wsl --import Ubuntu-22.04 D:\Games\wsl-ubuntu-22.04 mados-tools-13.1.0-WSL2.tar
 ```
 ![WSL2_Import](./images/Preparation/WSL2_Import.png)
 
@@ -66,8 +66,11 @@ wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.2.0-WSL2.tar
 [下载地址](https://github.com/dorssel/usbipd-win/releases)
 
 #### (可选)高级用户
-[独立工具链](https://pan.baidu.com/s/12H3sdpX6tJUUpJgh16QHhw?pwd=h5d8)  
-提取码: h5d8
+我们也提供独立工具链，供高级用户自行配置使用。
+| <!-- --> | <!-- --> | 
+| :----: | :----: |
+| 13.1.0 | [Windows (x64)](https://pan.baidu.com/s/1vGWgF-Fy9gOEEdraorDCiQ?pwd=2ra7) |
+| 12.2.0 | [Windows (x64)](https://pan.baidu.com/s/12H3sdpX6tJUUpJgh16QHhw?pwd=h5d8) |
 
 ## 安装代码编辑器
 推荐使用[Visual Studio Code](https://code.visualstudio.com/)作代码编辑工具。
@@ -86,7 +89,7 @@ wsl --import Ubuntu-20.04 D:\Games\wsl-ubuntu-20.04 mados-tools-12.2.0-WSL2.tar
 | Cortex-Debug | marus25         | Ubuntu  |
 | Remote - WSL | Microsoft       | Windows |
 ::: tip
-- **Windows** 平台下，插件安装需要区分主/子系统，详见下文。
+- **Windows** 平台，插件安装需要区分主/子系统，详见下文。
 - **MadOS** 支持 **Lua**，详见后续章节。
 :::
 
@@ -131,7 +134,7 @@ arm-none-eabi-gcc -v
 ```
 输出版本信息
 ``` bash
-gcc version 12.2.0 (GNU Tools for MadOS [ARM][20220922][gcc-12.2.0][Newlib])
+gcc version 13.1.0 (GNU Tools for MadOS [ARM][20230428][gcc-13.1.0][Newlib])
 ```
 
 ### GDB
@@ -141,15 +144,21 @@ arm-none-eabi-gdb -v
 ```
 输出版本信息
 ``` bash
-GNU gdb (GNU Tools for MadOS [ARM][20220922][gdb-12.1]) 12.1
+GNU gdb (GNU Tools for MadOS [ARM][20230428][gdb-13.1]) 13.1
 ```
 
 ### OpenOCD
+::: tip
+MacOSX平台需要赋予依赖动态库权限:
+``` bash
+sudo xattr -r -d com.apple.quarantine $MADOS_TOOLS_HOME/openocd/libexec
+```
+:::
 执行
 ``` bash
 openocd -v
 ```
 输出版本信息
 ``` bash
-xPack OpenOCD arm64 Open On-Chip Debugger 0.11.0+dev (2022-09-01-20:57)
+xPack Open On-Chip Debugger 0.12.0-01004-g9ea7f3d64-dirty (2023-01-30-17:03)
 ```

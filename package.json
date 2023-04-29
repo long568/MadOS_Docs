@@ -15,12 +15,11 @@
         "type": "git",
         "url": "https://github.com/long568/MadOS_Docs.git"
     },
-    "dependencies": {},
     "devDependencies": {
         "@iktakahiro/markdown-it-katex": "^3.1.0",
         "@vuepress/plugin-medium-zoom": "^1.9.7",
         "markdown-it": "^8.4.2",
         "markdown-it-footnote": "^3.0.2",
-        "vuepress": "^1.9.7"
+        "vuepress": "^1.9.9"
     }
 }
