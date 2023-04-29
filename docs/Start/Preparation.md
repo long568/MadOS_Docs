@@ -102,7 +102,7 @@ wsl --import Ubuntu-22.04 D:\Games\wsl-ubuntu-22.04 mados-tools-13.1.0-WSL2.tar
 
 #### 首次启动 Ubuntu & VSCode
 ``` powershell
-wsl
+wsl -u lo
 code .
 ```
 ![WSL2_First](./images/Preparation/WSL2_First.png)
