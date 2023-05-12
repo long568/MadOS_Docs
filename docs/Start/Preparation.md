@@ -4,8 +4,9 @@
 我们已为开发者准备好工具链:  
 | <!-- --> | <!-- --> | <!-- --> |
 | :----: | :----: | :----: |
-| 13.1.0 |  [MacOS (ARM64)](https://pan.baidu.com/s/14rjfLGgwCG8a6lIYkL524A?pwd=nk86) | [Windows (x64)](https://pan.baidu.com/s/1IEJhNeINeD2a_XFrR5jmCw?pwd=gs2i) |
-| 12.2.0  | [MacOS (ARM64)](https://pan.baidu.com/s/1DpRmPaYTWthTg9AusHGZlA?pwd=jm5m) | [Windows (x64)](https://pan.baidu.com/s/14Pqbtd3DH4XpbqxoXvuXXg?pwd=p3gc) |
+| 13.1.0 | [MacOS (ARM64)](https://pan.baidu.com/s/14rjfLGgwCG8a6lIYkL524A?pwd=nk86) | [Windows (x64)](https://pan.baidu.com/s/1IEJhNeINeD2a_XFrR5jmCw?pwd=gs2i) |
+| 12.3.0 | [MacOS (ARM64)](https://pan.baidu.com/s/1aLwCdV7JtOLaGFntPzHQDg?pwd=ngvj) | [Windows (x64)](https://pan.baidu.com/s/1cF0dAAaY6V6WM4vm-d4N8Q?pwd=v93s) |
+| 12.2.0 | [MacOS (ARM64)](https://pan.baidu.com/s/1DpRmPaYTWthTg9AusHGZlA?pwd=jm5m) | [Windows (x64)](https://pan.baidu.com/s/14Pqbtd3DH4XpbqxoXvuXXg?pwd=p3gc) |
 
 ## 配置工具链
 
@@ -70,6 +71,7 @@ wsl --import Ubuntu-22.04 D:\Games\wsl-ubuntu-22.04 mados-tools-13.1.0-WSL2.tar
 | <!-- --> | <!-- --> | 
 | :----: | :----: |
 | 13.1.0 | [Windows (x64)](https://pan.baidu.com/s/1vGWgF-Fy9gOEEdraorDCiQ?pwd=2ra7) |
+| 12.3.0 | [Windows (x64)](https://pan.baidu.com/s/1wno0VXv33sA3J8NhgO9Hjw?pwd=gwqw) |
 | 12.2.0 | [Windows (x64)](https://pan.baidu.com/s/12H3sdpX6tJUUpJgh16QHhw?pwd=h5d8) |
 
 ## 安装代码编辑器
